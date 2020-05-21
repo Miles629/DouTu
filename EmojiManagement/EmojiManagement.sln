@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmojiManagement", "ConsoleApp1\EmojiManagement.csproj", "{52A99EDC-3CEC-4253-802B-8CE8EC9C2580}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doutu", "..\Doutu\Doutu\Doutu.csproj", "{68B75C19-605E-4ECF-B5E6-5E45077436AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52A99EDC-3CEC-4253-802B-8CE8EC9C2580}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52A99EDC-3CEC-4253-802B-8CE8EC9C2580}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52A99EDC-3CEC-4253-802B-8CE8EC9C2580}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52A99EDC-3CEC-4253-802B-8CE8EC9C2580}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68B75C19-605E-4ECF-B5E6-5E45077436AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68B75C19-605E-4ECF-B5E6-5E45077436AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68B75C19-605E-4ECF-B5E6-5E45077436AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68B75C19-605E-4ECF-B5E6-5E45077436AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E62CFDFE-E475-4ADD-A770-3793229D5D5D}
+	EndGlobalSection
+EndGlobal

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EmojiManagment
+namespace EmojiManagement
 {
     //表情类
     class Emoji
