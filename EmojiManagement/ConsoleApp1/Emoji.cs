@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
+using System.Linq;
 using System.Text;
-
+using System.Xml.Serialization;
+//注释：这个文件的代码已经基本成型。后面的工作应该改不到这个了
 namespace EmojiManagement
 {
     //表情类
-    class Emoji
+    class Emoji:IComparable<Emoji>
     {
+        [Key]
         public string Id { set; get; }
         public string Path { set; get; }    //图片路径
         public string Keyword { set; get; }    //关键词
@@ -14,14 +20,24 @@ namespace EmojiManagement
         public string TargetPeople { set; get; }    //目标人群
         public string Frequency { get; }    //使用频率
 
-        public Emoji() {}
+        public Emoji() 
+        {
+            //本项目理论上不允许有空参数构造
+        }
 
         public Emoji(string path, string keyword, string series, string targetpeople)
         {
+            Id = Guid.NewGuid().ToString();//确保id唯一
             Path = path;
             Keyword = keyword;
             Series = series;
             TargetPeople = targetpeople;
+        }
+
+        public int CompareTo(Emoji other)
+        {
+            if (other == null) return 1;
+            return this.Id.CompareTo(other.Id);
         }
 
         //判断文件类型，看到了现成的我就直接copy过来了
@@ -41,11 +57,20 @@ namespace EmojiManagement
 
         public override string ToString()
         {
-            return Id;
+            StringBuilder strBuilder = new StringBuilder();
+            strBuilder.Append($"Id:{Id}, Keyword:{Keyword},Series:{Series},TargetPeople：{TargetPeople},Frequency:{Frequency}\t");
+            return strBuilder.ToString();
         }
-
-
-
-
+        public override bool Equals(object obj)
+        {
+            var e = obj as Emoji;
+            return e != null && Id == e.Id;
+        }
+        public override int GetHashCode()
+        {
+            var hashCode = -5211314;
+            hashCode = hashCode * -2020520 + Id.GetHashCode();
+            return hashCode;
+        }
     }
 }
