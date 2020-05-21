@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using EmojiManagement;
@@ -24,6 +25,12 @@ namespace EmojiManagement
             {
                 using (var db = new EmojiContext())
                 {
+                    //拷贝图片到指定文件夹
+                    string picPath = "";//这里记得传入图片的路径,通过可视化操作选中图片传参，参数记得改一下
+                    string filename = Path.GetFileName(picPath); 
+                    string targetPath = @".\emojifile\" + filename;
+                    File.Copy(picPath, targetPath);
+                    //在数据库里添加这个表情的信息
                     db.Emojis.Add(emoji);
                     db.SaveChanges();
                 }
@@ -39,6 +46,18 @@ namespace EmojiManagement
         public static void DeleteEmoji()
         {
             //张智敏&马草原
+            try
+            {
+                using (var db = new EmojiContext())
+                {
+
+                }
+            }
+            catch (Exception e)
+            {
+                //TODO 需要更加错误类型返回不同错误信息
+                throw new ApplicationException($"删除订单错误!");
+            }
         }
 
         public static void ModifyEmoji()
