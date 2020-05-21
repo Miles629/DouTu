@@ -14,6 +14,6 @@ namespace EmojiManagement
         }
 
         public DbSet<Emoji> Emojis { set; get; }
-        public DbSet<Favorate> Favorates { set; get; }
+        public DbSet<Favorite> Favorates { set; get; }
     }
 }
