@@ -171,7 +171,7 @@
     <Compile Include="Emoji.cs" />
     <Compile Include="EmojiContext.cs" />
     <Compile Include="EmojiService.cs" />
-    <Compile Include="Favorate.cs" />
+    <Compile Include="favorite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
