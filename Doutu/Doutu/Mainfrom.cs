@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Doutu
 {
-    public partial class Form1 : Form
+    public partial class Mainfrom : Form
     {
-        public Form1()
+        public Mainfrom()
         {
             InitializeComponent();
         }

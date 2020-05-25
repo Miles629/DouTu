@@ -1,6 +1,6 @@
 ﻿namespace Doutu
 {
-    partial class Form1
+    partial class Mainfrom
     {
         /// <summary>
         /// 必需的设计器变量。

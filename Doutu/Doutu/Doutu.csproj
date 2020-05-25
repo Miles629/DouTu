@@ -104,11 +104,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Mainfrom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Mainfrom.Designer.cs">
+      <DependentUpon>Mainfrom.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAdd.cs">
       <SubType>Form</SubType>
@@ -130,8 +130,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Mainfrom.resx">
+      <DependentUpon>Mainfrom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAdd.resx">
       <DependentUpon>FormAdd.cs</DependentUpon>
