@@ -22,5 +22,10 @@ namespace Doutu
             FormManage formManage = new FormManage();
             formManage.ShowDialog();
         }
+
+        private void export_Click(object sender, EventArgs e)
+        {
+            //ExportEmoji（）；
+        }
     }
 }

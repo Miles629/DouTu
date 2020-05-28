@@ -16,7 +16,7 @@ using EmojiManagement;
 
 namespace EmojiManagement
 {
-    class EmojiService
+   public class EmojiService
     {
 
 

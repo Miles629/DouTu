@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 namespace EmojiManagement
 {
     //表情类
-    class Emoji:IComparable<Emoji>
+    public class Emoji:IComparable<Emoji>
     {
         [Key]
         public string Id { set; get; }

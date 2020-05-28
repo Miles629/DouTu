@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EmojiManagement;
 
 namespace Doutu
 {
@@ -31,7 +32,7 @@ namespace Doutu
                 imagePathList.Add(file.FullName);//图片路径
                 this.imageList1.Images.Add(Image.FromFile(file.FullName));
             }
-
+           
 
             //增加6行和6列
             for (int i = 0; i < 6; i++)
@@ -54,6 +55,7 @@ namespace Doutu
                     if (count < imagePathList.Count)
                     {
                         this.dataGridView1[i, j].Value = imageList1.Images[count++];
+                        
                     }
                     else
                     {
@@ -72,11 +74,12 @@ namespace Doutu
         {
             //getRecommendList
             showpicture(/*recommendList*/);
+
         }
 
         private void export_Click(object sender, EventArgs e)
         {
-
+            EmojiService.ExportEmoji();
         }
 
         private void likes_Click(object sender, EventArgs e)
@@ -88,6 +91,8 @@ namespace Doutu
         private void import_Click(object sender, EventArgs e)
         {
             FormAdd madd = new FormAdd();
+     //dataGridView1.CurrentCell.
+                
             madd.ShowDialog();
         }
 
@@ -97,6 +102,16 @@ namespace Doutu
         }
 
         private void recent_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void search_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addlike_Click(object sender, EventArgs e)
         {
 
         }
