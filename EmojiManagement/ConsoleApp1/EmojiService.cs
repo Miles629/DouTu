@@ -146,32 +146,15 @@ namespace EmojiManagement
         public static void ImportEmojis(String sourcePath, String targetTableName)
         {
             //席诺
-            string sqlconn = System.Configuration.ConfigurationManager.ConnectionStrings["Strsqlconn"].ConnectionString;
-            SqlConnection conn = new SqlConnection(sqlconn);
-            conn.Open();
-            using (XmlTextReader xmlReader = new XmlTextReader(sourcePath))
+            //连接字符串
+            string connStr = ConfigurationManager.ConnectionStrings["connstr"].ConnectionString;
+            string sql = string.Format("select * from dbo.StudentInfo");
+            DataSet ds = new DataSet();
+            using (SqlDataAdapter sda = new SqlDataAdapter(sql, connStr))
             {
-                DataSet ds = new DataSet();
-                ds.ReadXml(XmlReader.Create(sourcePath));//把数据读到DataSet这个过程有点慢，取决于XML文件大小
-                using (SqlBulkCopy bcp = new SqlBulkCopy(conn))
-                {
-                    bcp.BatchSize = ds.Tables[0].Rows.Count;
-                    bcp.DestinationTableName = targetTableName;
-                    StringBuilder sbSQL = new StringBuilder();
-                    sbSQL.AppendFormat("select top 1 * from {0}", targetTableName);
-                    DbHelperSQL dbHelper = new DbHelperSQL();//自定义数据库操作类
-                    DataTable dt = dbHelper.GetDataTable(conn, sbSQL.ToString());
-                    for (int i = 0; i < dt.Columns.Count; i++)
-                    {
-                        for (int j = 0; j < ds.Tables[0].Columns.Count; j++)
-                        {
-                            if (dt.Columns[i].ColumnName == ds.Tables[0].Columns[j].ColumnName)
-                                bcp.ColumnMappings.Add(ds.Tables[0].Columns[j].ColumnName, dt.Columns[i].ColumnName);
-                        }
-                    }
-                    bcp.WriteToServer(ds.Tables[0]);
-                }
+                 sda.Fill(ds);
             }
+             ds.WriteXml("b.xml");//将读出来的内容写到一个xml文件中
         }
         //导出表情
         public static void ExportEmoji()
