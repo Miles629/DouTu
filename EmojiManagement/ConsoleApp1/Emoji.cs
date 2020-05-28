@@ -18,7 +18,8 @@ namespace EmojiManagement
         public string Keyword { set; get; }    //关键词
         public string Series { set; get; }      //图片所属系列
         public string TargetPeople { set; get; }    //目标人群
-        public string Frequency { get; }    //使用频率
+        public string Frequency { get; set; }    //使用频率
+
 
         public Emoji() 
         {
@@ -37,7 +38,7 @@ namespace EmojiManagement
         public int CompareTo(Emoji other)
         {
             if (other == null) return 1;
-            return this.Id.CompareTo(other.Id);
+            return this.Frequency.CompareTo(other.Frequency);
         }
 
         //判断文件类型，看到了现成的我就直接copy过来了
