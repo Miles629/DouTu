@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EmojiManagement
 {
-    class EmojiContext:DbContext
+    public class EmojiContext:DbContext
     {
         public EmojiContext() : base("EmojiDatabase")
         {
