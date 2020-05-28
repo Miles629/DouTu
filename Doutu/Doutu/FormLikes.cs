@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using EmojiManagement;
 namespace Doutu
 {
     public partial class FormLikes : Form
@@ -25,7 +25,7 @@ namespace Doutu
 
         private void export_Click(object sender, EventArgs e)
         {
-            //ExportEmoji（）；
+            ExportEmoji（）；
         }
     }
 }
