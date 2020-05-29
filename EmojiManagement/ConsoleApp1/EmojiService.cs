@@ -75,6 +75,16 @@ namespace EmojiManagement
             return db.Emojis.Include("");
         }
 
+        public static List<Emoji> SortbyFrequency()
+        {
+            using (var db = new EmojiContext())
+            {
+                var query = AllEmojis(db).ToList();
+                query.Sort();
+                return query;
+            }
+        }
+
 
         //这个是一个综合的搜索，先空着
         public static List<Emoji> SearchEmoji(string info)
