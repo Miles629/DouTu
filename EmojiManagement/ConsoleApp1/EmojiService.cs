@@ -47,6 +47,18 @@ namespace EmojiManagement
                 //throw new ApplicationException($"添加错误: {e.Message}");
             }
         }
+        //通过路径判断数据库中是否存在当前表情。
+        public static bool Emojiexist(string path)
+        {
+            using (var db = new EmojiContext())
+            {
+                var queary = db.Emojis.Where(o => o.Path == path);
+                if (queary == null)
+                    return false;//不存在返回false
+                else
+                    return true;
+            }
+        }
 
         public static void DeleteEmoji()
         {
