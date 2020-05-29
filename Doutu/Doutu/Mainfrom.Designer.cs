@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.likes = new System.Windows.Forms.Button();
             this.search = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewImage = new System.Windows.Forms.DataGridView();
             this.recent = new System.Windows.Forms.Button();
             this.recommend = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -43,9 +43,9 @@
             this.bylabel = new System.Windows.Forms.RadioButton();
             this.bytarget = new System.Windows.Forms.RadioButton();
             this.byseries = new System.Windows.Forms.RadioButton();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -73,18 +73,18 @@
             this.search.UseVisualStyleBackColor = true;
             this.search.Click += new System.EventHandler(this.search_Click);
             // 
-            // dataGridView1
+            // dataGridViewImage
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 7);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(444, 250);
-            this.dataGridView1.TabIndex = 5;
+            this.dataGridViewImage.AllowUserToAddRows = false;
+            this.dataGridViewImage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewImage.Location = new System.Drawing.Point(7, 7);
+            this.dataGridViewImage.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewImage.Name = "dataGridViewImage";
+            this.dataGridViewImage.RowTemplate.Height = 30;
+            this.dataGridViewImage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewImage.Size = new System.Drawing.Size(444, 250);
+            this.dataGridViewImage.TabIndex = 5;
             // 
             // recent
             // 
@@ -221,15 +221,15 @@
             this.byseries.Text = "按系列";
             this.byseries.UseVisualStyleBackColor = true;
             // 
-            // imageList1
+            // imageList
             // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(100, 100);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList.ImageSize = new System.Drawing.Size(100, 100);
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.dataGridViewImage);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 40);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
@@ -250,7 +250,7 @@
             this.Name = "Mainfrom";
             this.Padding = new System.Windows.Forms.Padding(3);
             this.Text = "逗图";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
@@ -263,7 +263,7 @@
 
         private System.Windows.Forms.Button likes;
         private System.Windows.Forms.Button search;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewImage;
         private System.Windows.Forms.Button recent;
         private System.Windows.Forms.Button recommend;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -275,7 +275,7 @@
         private System.Windows.Forms.RadioButton bylabel;
         private System.Windows.Forms.RadioButton bytarget;
         private System.Windows.Forms.RadioButton byseries;
-        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.Panel panel1;
     }
 }

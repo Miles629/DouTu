@@ -31,7 +31,7 @@ namespace EmojiManagement
                 using (var db = new EmojiContext())
                 {
                     //拷贝图片到指定文件夹
-                    string picPath = "";//这里记得传入图片的路径,通过可视化操作选中图片传参，参数记得改一下奥席诺同学
+                    string picPath = emoji.Path;//这里记得传入图片的路径,通过可视化操作选中图片传参，参数记得改一下奥席诺同学
                     string filename = Path.GetFileName(picPath);
                     string targetPath = @".\emojifile\" + filename;
                     File.Copy(picPath, targetPath);
@@ -44,7 +44,7 @@ namespace EmojiManagement
             catch (Exception e)
             {
                 //TODO 需要更加错误类型返回不同错误信息
-                throw new ApplicationException($"添加错误: {e.Message}");
+                //throw new ApplicationException($"添加错误: {e.Message}");
             }
         }
 
