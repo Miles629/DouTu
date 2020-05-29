@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using EmojiManagement;
 
@@ -26,11 +21,11 @@ namespace Doutu
             DirectoryInfo dir = new DirectoryInfo("..\\..\\Resources");//获取目录
             FileInfo[] fileinfo = dir.GetFiles("*.JPG");//获取文件夹中的图片文件
             //防止图片失真
-            this.imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            this.imageList.ColorDepth = ColorDepth.Depth32Bit;
             foreach (FileInfo file in fileinfo)
             {
                 imagePathList.Add(file.FullName);//图片路径
-                this.imageList1.Images.Add(Image.FromFile(file.FullName));
+                this.imageList.Images.Add(Image.FromFile(file.FullName));
             }
            
 
@@ -54,7 +49,7 @@ namespace Doutu
                 {
                     if (count < imagePathList.Count)
                     {
-                        this.dataGridView1[i, j].Value = imageList1.Images[count++];
+                        this.dataGridView1[i, j].Value = imageList.Images[count++];
                         
                     }
                     else
@@ -79,7 +74,7 @@ namespace Doutu
 
         private void export_Click(object sender, EventArgs e)
         {
-            EmojiService.ExportEmoji();
+            EmojiManagement.EmojiService.ExportEmoji();
         }
 
         private void likes_Click(object sender, EventArgs e)

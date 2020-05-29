@@ -43,7 +43,7 @@
             this.bylabel = new System.Windows.Forms.RadioButton();
             this.bytarget = new System.Windows.Forms.RadioButton();
             this.byseries = new System.Windows.Forms.RadioButton();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -221,11 +221,11 @@
             this.byseries.Text = "按系列";
             this.byseries.UseVisualStyleBackColor = true;
             // 
-            // imageList1
+            // imageList
             // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(100, 100);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList.ImageSize = new System.Drawing.Size(100, 100);
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // panel1
             // 
@@ -275,7 +275,7 @@
         private System.Windows.Forms.RadioButton bylabel;
         private System.Windows.Forms.RadioButton bytarget;
         private System.Windows.Forms.RadioButton byseries;
-        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.Panel panel1;
     }
 }
