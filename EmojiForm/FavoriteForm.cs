@@ -17,6 +17,11 @@ namespace EmojiForm
         private int row = 4;
         private int col = 5;
 
+        //当前展示的表情
+        public static List<Emoji> emojiList = new List<Emoji>();
+        //当前选中的表情
+        Emoji emojiSelected = null;
+
         public FavoriteForm()
         {
             InitializeComponent();
@@ -35,7 +40,8 @@ namespace EmojiForm
                 this.dataGridViewImage.Rows[r].Height = 100;//限定行宽
             }
 
-           // ShowEmojis();
+            //emojiList=
+           // ShowEmojis(emojiList);
         }
         private void ShowEmojis(List<Emoji> emojis)
         {
@@ -66,7 +72,16 @@ namespace EmojiForm
         //选中某个单元格
         private void dataGridViewLikeEmoji_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            int r = dataGridViewImage.CurrentCell.RowIndex;
+            int c = dataGridViewImage.CurrentCell.ColumnIndex;
+            int location = r * col + c;
+            emojiSelected = emojiList[location];
+        }
 
+        private void BtnChange_Click(object sender, EventArgs e)
+        {
+            ModifyForm modiForm = new ModifyForm();
+            modiForm.ShowDialog();
         }
     }
 }

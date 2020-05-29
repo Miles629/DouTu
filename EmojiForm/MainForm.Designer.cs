@@ -30,20 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.bylabel = new System.Windows.Forms.RadioButton();
             this.bytarget = new System.Windows.Forms.RadioButton();
             this.byseries = new System.Windows.Forms.RadioButton();
             this.search = new System.Windows.Forms.Button();
+            this.recommend = new System.Windows.Forms.Button();
             this.import = new System.Windows.Forms.Button();
             this.export = new System.Windows.Forms.Button();
-            this.recommend = new System.Windows.Forms.Button();
             this.addlike = new System.Windows.Forms.Button();
             this.likes = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.dataGridViewImage = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).BeginInit();
@@ -64,6 +64,13 @@
             this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(10);
             this.flowLayoutPanel2.Size = new System.Drawing.Size(1015, 55);
             this.flowLayoutPanel2.TabIndex = 13;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(13, 13);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(312, 28);
+            this.textBox1.TabIndex = 15;
             // 
             // bylabel
             // 
@@ -110,6 +117,16 @@
             this.search.UseVisualStyleBackColor = true;
             this.search.Click += new System.EventHandler(this.search_Click);
             // 
+            // recommend
+            // 
+            this.recommend.Location = new System.Drawing.Point(707, 13);
+            this.recommend.Name = "recommend";
+            this.recommend.Size = new System.Drawing.Size(112, 36);
+            this.recommend.TabIndex = 15;
+            this.recommend.Text = "热门表情";
+            this.recommend.UseVisualStyleBackColor = true;
+            this.recommend.Click += new System.EventHandler(this.recommend_Click);
+            // 
             // import
             // 
             this.import.Location = new System.Drawing.Point(3, 3);
@@ -129,16 +146,6 @@
             this.export.Text = "批量导出";
             this.export.UseVisualStyleBackColor = true;
             // 
-            // recommend
-            // 
-            this.recommend.Location = new System.Drawing.Point(707, 13);
-            this.recommend.Name = "recommend";
-            this.recommend.Size = new System.Drawing.Size(112, 36);
-            this.recommend.TabIndex = 15;
-            this.recommend.Text = "热门表情";
-            this.recommend.UseVisualStyleBackColor = true;
-            this.recommend.Click += new System.EventHandler(this.recommend_Click);
-            // 
             // addlike
             // 
             this.addlike.Location = new System.Drawing.Point(3, 115);
@@ -147,6 +154,7 @@
             this.addlike.TabIndex = 19;
             this.addlike.Text = "加入收藏";
             this.addlike.UseVisualStyleBackColor = true;
+            this.addlike.Click += new System.EventHandler(this.addlike_Click);
             // 
             // likes
             // 
@@ -199,13 +207,6 @@
             this.imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             this.imageList.ImageSize = new System.Drawing.Size(100, 100);
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(13, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(312, 28);
-            this.textBox1.TabIndex = 15;
             // 
             // MainForm
             // 

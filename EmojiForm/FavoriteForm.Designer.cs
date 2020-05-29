@@ -48,6 +48,7 @@
             this.BtnChange.TabIndex = 7;
             this.BtnChange.Text = "修改";
             this.BtnChange.UseVisualStyleBackColor = true;
+            this.BtnChange.Click += new System.EventHandler(this.BtnChange_Click);
             // 
             // btnDelete
             // 

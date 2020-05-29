@@ -20,6 +20,15 @@ namespace EmojiForm
         //搜索条件 默认0(按标签)，1(按对象)，2(按系列)
         private int queryCondi = 0;
 
+        /// <summary>
+        /// 定义静态变量emojiList，便于在不同界面对数据库内容进行操作
+        /// 赵文山
+        /// </summary>
+        public static List<Emoji> emojiList = new List<Emoji>();//只需要一个存储当前展示的表情列表就行了
+
+        //当前选中的表情
+        Emoji emojiSelected=null;
+
         public MainForm()
         {
             InitializeComponent();
@@ -39,7 +48,9 @@ namespace EmojiForm
             }
 
             //展示热门表情
-            //ShowEmojis(EmojiService.SortbyFrequency());
+            emojiList = EmojiService.SortbyFrequency();
+            ShowEmojis(EmojiService.SortbyFrequency());
+
         }
 
         private void ShowEmojis(List<Emoji> emojis)
@@ -77,6 +88,7 @@ namespace EmojiForm
 
         private void recommend_Click(object sender, EventArgs e)
         {
+            emojiList = EmojiService.SortbyFrequency();
             ShowEmojis(EmojiService.SortbyFrequency());
         }
         private void search_Click(object sender, EventArgs e)
@@ -84,16 +96,44 @@ namespace EmojiForm
             switch (queryCondi)
             {
                 case 0:
-                    ShowEmojis(EmojiService.SearchByKeyword(textBox1.Text));
+                    emojiList = EmojiService.SearchByKeyword(textBox1.Text);
+                    ShowEmojis(emojiList);
                     break;
                 case 1:
-                    ShowEmojis(EmojiService.SearchByTargetPeople(textBox1.Text));
+                    emojiList = EmojiService.SearchByTargetPeople(textBox1.Text);
+                    ShowEmojis(emojiList);
                     break;
                 case 2:
-                    ShowEmojis(EmojiService.SearchBySeries(textBox1.Text));
+                    emojiList=EmojiService.SearchBySeries(textBox1.Text);
+                    ShowEmojis(emojiList);
                     break;
             }
         }
+
+
+        //选中一个单元格中的表情
+        private void dataGridViewImage_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int r=dataGridViewImage.CurrentCell.RowIndex;
+            int c= dataGridViewImage.CurrentCell.ColumnIndex;
+            int location = r * col + c;
+            emojiSelected = emojiList[location];
+        }
+
+        private void likes_Click(object sender, EventArgs e)
+        {
+            FavoriteForm favoriteForm = new FavoriteForm();
+            favoriteForm.ShowDialog();
+        }
+
+        private void addlike_Click(object sender, EventArgs e)
+        {
+            //将emojiSelected加入收藏夹，缺函数
+        }
+
+
+
+
         private void bytarget_CheckedChanged(object sender, EventArgs e)
         {
             queryCondi = 1;
@@ -105,20 +145,6 @@ namespace EmojiForm
         private void bylabel_CheckedChanged(object sender, EventArgs e)
         {
             queryCondi = 0;
-        }
-
-        //TODO
-        //选中一个单元格中的表情
-        private void dataGridViewImage_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //为了看看有没有选中写的这句但是好像没用
-            MessageBox.Show(dataGridViewImage.CurrentCell.RowIndex.ToString());
-        }
-
-        private void likes_Click(object sender, EventArgs e)
-        {
-            FavoriteForm favoriteForm = new FavoriteForm();
-            favoriteForm.ShowDialog();
         }
     }
 }
