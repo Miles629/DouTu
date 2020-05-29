@@ -177,35 +177,15 @@ namespace EmojiManagement
         public static void ExportEmoji()
         {
             //席诺
+            //连接字符串
             string connStr = ConfigurationManager.ConnectionStrings["connstr"].ConnectionString;
-            string sql = string.Format("select * from dbo.emojis");
-            //我们创建的xml文件的根节点是emoji,节点属性是标签,属性值是label
-            XDocument doc = new XDocument(new XElement("emojis", new XAttribute("编号", "Id")));
-
-            XElement root = doc.Root;
-            using (SqlConnection conn = new SqlConnection(connStr))
+            string sql = string.Format("select * from dbo.StudentInfo");
+            DataSet ds = new DataSet();
+            using (SqlDataAdapter sda = new SqlDataAdapter(sql, connStr))
             {
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
-                {
-                    conn.Open();
-                    using (SqlDataReader Reader = cmd.ExecuteReader())
-                    {
-                        if (Reader.HasRows)
-                        {
-                            while (Reader.Read())
-                            {
-
-                                int filedCount = Reader.FieldCount;
-                                //从根节点下创建元素XElement对象，即展示在页面上就是创建元素，该元素的属性有StuId,值为Reader[0]中的值。                                  //创建的该元素的子元素为ClassId,文本值为Reader[1]的值
-                                XElement ele = new XElement("emoji", new XAttribute("label", Reader[0]), new XElement("path", Reader[1]));
-                                doc.Root.Add(ele);
-
-                            }
-                        }
-                    }
-                }
-                doc.Save("a.xml");//将所创建的一系列节点保存在a.xml文件中
+                sda.Fill(ds);
             }
+            ds.WriteXml("b.xml");//将读出来的内容写到一个xml文件中
         }
 
     }
