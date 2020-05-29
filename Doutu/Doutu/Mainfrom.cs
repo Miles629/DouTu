@@ -132,7 +132,7 @@ namespace Doutu
 
         private void export_Click(object sender, EventArgs e)
         {
-            EmojiManagement.EmojiService.ExportEmoji();
+            EmojiService.ExportEmoji();
         }
 
         private void likes_Click(object sender, EventArgs e)

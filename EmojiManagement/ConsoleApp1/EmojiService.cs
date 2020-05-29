@@ -33,7 +33,7 @@ namespace EmojiManagement
                     //拷贝图片到指定文件夹
                     string picPath = emoji.Path;//这里记得传入图片的路径,通过可视化操作选中图片传参，参数记得改一下奥席诺同学
                     string filename = Path.GetFileName(picPath);
-                    string targetPath = @".\emojifile\" + filename;
+                    string targetPath = @"D:\emojifile\" + filename;
                     File.Copy(picPath, targetPath);
                     //在数据库里添加这个表情的信息
                     db.Emojis.Add(emoji);
@@ -146,66 +146,29 @@ namespace EmojiManagement
         public static void ImportEmojis(String sourcePath, String targetTableName)
         {
             //席诺
-            string sqlconn = System.Configuration.ConfigurationManager.ConnectionStrings["Strsqlconn"].ConnectionString;
-            SqlConnection conn = new SqlConnection(sqlconn);
-            conn.Open();
-            using (XmlTextReader xmlReader = new XmlTextReader(sourcePath))
+            //连接字符串
+            string connStr = ConfigurationManager.ConnectionStrings["connstr"].ConnectionString;
+            string sql = string.Format("select * from dbo.StudentInfo");
+            DataSet ds = new DataSet();
+            using (SqlDataAdapter sda = new SqlDataAdapter(sql, connStr))
             {
-                DataSet ds = new DataSet();
-                ds.ReadXml(XmlReader.Create(sourcePath));//把数据读到DataSet这个过程有点慢，取决于XML文件大小
-                using (SqlBulkCopy bcp = new SqlBulkCopy(conn))
-                {
-                    bcp.BatchSize = ds.Tables[0].Rows.Count;
-                    bcp.DestinationTableName = targetTableName;
-                    StringBuilder sbSQL = new StringBuilder();
-                    sbSQL.AppendFormat("select top 1 * from {0}", targetTableName);
-                    DbHelperSQL dbHelper = new DbHelperSQL();//自定义数据库操作类
-                    DataTable dt = dbHelper.GetDataTable(conn, sbSQL.ToString());
-                    for (int i = 0; i < dt.Columns.Count; i++)
-                    {
-                        for (int j = 0; j < ds.Tables[0].Columns.Count; j++)
-                        {
-                            if (dt.Columns[i].ColumnName == ds.Tables[0].Columns[j].ColumnName)
-                                bcp.ColumnMappings.Add(ds.Tables[0].Columns[j].ColumnName, dt.Columns[i].ColumnName);
-                        }
-                    }
-                    bcp.WriteToServer(ds.Tables[0]);
-                }
+                 sda.Fill(ds);
             }
+             ds.WriteXml("b.xml");//将读出来的内容写到一个xml文件中
         }
         //导出表情
         public static void ExportEmoji()
         {
             //席诺
+            //连接字符串
             string connStr = ConfigurationManager.ConnectionStrings["connstr"].ConnectionString;
-            string sql = string.Format("select * from dbo.emojis");
-            //我们创建的xml文件的根节点是emoji,节点属性是标签,属性值是label
-            XDocument doc = new XDocument(new XElement("emojis", new XAttribute("编号", "Id")));
-
-            XElement root = doc.Root;
-            using (SqlConnection conn = new SqlConnection(connStr))
+            string sql = string.Format("select * from dbo.StudentInfo");
+            DataSet ds = new DataSet();
+            using (SqlDataAdapter sda = new SqlDataAdapter(sql, connStr))
             {
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
-                {
-                    conn.Open();
-                    using (SqlDataReader Reader = cmd.ExecuteReader())
-                    {
-                        if (Reader.HasRows)
-                        {
-                            while (Reader.Read())
-                            {
-
-                                int filedCount = Reader.FieldCount;
-                                //从根节点下创建元素XElement对象，即展示在页面上就是创建元素，该元素的属性有StuId,值为Reader[0]中的值。                                  //创建的该元素的子元素为ClassId,文本值为Reader[1]的值
-                                XElement ele = new XElement("emoji", new XAttribute("label", Reader[0]), new XElement("path", Reader[1]));
-                                doc.Root.Add(ele);
-
-                            }
-                        }
-                    }
-                }
-                doc.Save("a.xml");//将所创建的一系列节点保存在a.xml文件中
+                sda.Fill(ds);
             }
+            ds.WriteXml("b.xml");//将读出来的内容写到一个xml文件中
         }
 
     }
