@@ -33,7 +33,7 @@ namespace EmojiManagement
                     //拷贝图片到指定文件夹
                     string picPath = emoji.Path;//这里记得传入图片的路径,通过可视化操作选中图片传参，参数记得改一下奥席诺同学
                     string filename = Path.GetFileName(picPath);
-                    string targetPath = @".\emojifile\" + filename;
+                    string targetPath = @"D:\emojifile\" + filename;
                     File.Copy(picPath, targetPath);
                     //在数据库里添加这个表情的信息
                     db.Emojis.Add(emoji);
