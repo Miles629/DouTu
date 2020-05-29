@@ -25,7 +25,7 @@ namespace Doutu
 
         private void export_Click(object sender, EventArgs e)
         {
-            ExportEmoji（）；
+            EmojiService.ExportEmoji();
         }
     }
 }
