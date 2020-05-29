@@ -18,7 +18,8 @@ namespace EmojiManagement
         public string Keyword { set; get; }    //关键词
         public string Series { set; get; }      //图片所属系列
         public string TargetPeople { set; get; }    //目标人群
-        public string Frequency { get; set; }    //使用频率
+        public int Frequency { get; set; }    //使用频率
+        public bool IsFavorite { get; set; }//是否在收藏夹
 
 
         public Emoji() 
@@ -26,13 +27,15 @@ namespace EmojiManagement
             //本项目理论上不允许有空参数构造
         }
 
-        public Emoji(string path, string keyword, string series, string targetpeople)
+        public Emoji(string path, string keyword, string series, string targetpeople,int frequency,bool isFavorite)
         {
             Id = Guid.NewGuid().ToString();//确保id唯一
             Path = path;
             Keyword = keyword;
             Series = series;
             TargetPeople = targetpeople;
+            Frequency = frequency;
+            IsFavorite = isFavorite;
         }
 
         public int CompareTo(Emoji other)

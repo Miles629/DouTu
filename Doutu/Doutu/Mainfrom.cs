@@ -74,9 +74,9 @@ namespace Doutu
         }
         private void showDataBasePicture()
         {
-           
+
             //导出数据库中所有的数据，并创建EmojiList
-           
+
             emojiList = EmojiService.SortbyFrequency();
             //防止图片失真
             this.imageList.ColorDepth = ColorDepth.Depth32Bit;
@@ -156,6 +156,44 @@ namespace Doutu
 
         private void recent_Click(object sender, EventArgs e)
         {
+           emojiList=EmojiService.SortbyFrequency();
+           this.imageList.ColorDepth = ColorDepth.Depth32Bit;
+           foreach (Emoji emoji in emojiList)
+           {
+                if (emoji.Frequency != "0")
+                {
+                    this.imageList.Images.Add(Image.FromFile(emoji.Path));
+                }    
+           }
+            //增加6行和6列
+            for (int i = 0; i < 6; i++)
+            {
+                DataGridViewImageColumn ic = new DataGridViewImageColumn();
+                this.dataGridViewImage.Columns.Add(ic);
+                this.dataGridViewImage.Rows.Add();//增加行
+
+                this.dataGridViewImage.Columns[i].DefaultCellStyle.NullValue = null;//当没有数据时，不会显示红叉，cell.Value 必须是null，对于空串这句无效
+                this.dataGridViewImage.Columns[i].Width = 100;//限定列宽
+                this.dataGridViewImage.Rows[i].Height = 100;//限定行宽
+            }
+
+            //展示imageList中的表情
+            int count = 0;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    if (count < emojiList.Count)
+                    {
+                        this.dataGridViewImage[i, j].Value = imageList.Images[count++];
+
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
 
         }
 
@@ -166,7 +204,10 @@ namespace Doutu
 
         private void addlike_Click(object sender, EventArgs e)
         {
-
+            int cellRow = dataGridViewImage.CurrentCell.RowIndex;
+            int cellColumn = dataGridViewImage.CurrentCell.ColumnIndex;
+            FormAdd madd = new FormAdd(cellRow, cellColumn,true);
+            madd.ShowDialog();
         }
     }
 }
