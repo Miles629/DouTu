@@ -42,7 +42,6 @@ namespace EmojiForm
             //ShowEmojis(EmojiService.SortbyFrequency());
         }
 
-
         private void ShowEmojis(List<Emoji> emojis)
         {
             //清空图片数据
@@ -107,10 +106,13 @@ namespace EmojiForm
         {
             queryCondi = 0;
         }
+
+        //TODO
         //选中一个单元格中的表情
         private void dataGridViewImage_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            //为了看看有没有选中写的这句但是好像没用
+            MessageBox.Show(dataGridViewImage.CurrentCell.RowIndex.ToString());
         }
 
         private void likes_Click(object sender, EventArgs e)
