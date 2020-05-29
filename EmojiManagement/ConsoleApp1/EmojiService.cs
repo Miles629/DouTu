@@ -72,7 +72,7 @@ namespace EmojiManagement
 
         public static IQueryable<Emoji> AllEmojis(EmojiContext db)
         {
-            return db.Emojis.Include("");
+            return db.Emojis;
         }
 
         public static List<Emoji> SortbyFrequency()
