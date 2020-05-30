@@ -23,8 +23,9 @@ namespace EmojiForm
         /// <summary>
         /// 定义静态变量emojiList，便于在不同界面对数据库内容进行操作
         /// 赵文山
+        /// /// 蒋沁月说只需要一个存储当前展示的表情列表就行了
         /// </summary>
-        public static List<Emoji> emojiList = new List<Emoji>();//只需要一个存储当前展示的表情列表就行了
+        public static List<Emoji> emojiList = new List<Emoji>();
 
         //当前选中的表情
         Emoji emojiSelected=null;
@@ -57,6 +58,13 @@ namespace EmojiForm
         {
             //清空图片数据
             imageList.Images.Clear();
+            for (int r = 0; r < row; r++)
+            {
+                for (int c = 0; c < col; c++)
+                {
+                    this.dataGridViewImage[c, r].Value = null;
+                }
+            }
             //防止图片失真
             this.imageList.ColorDepth = ColorDepth.Depth32Bit;
             //将图片加入imageList
@@ -88,6 +96,7 @@ namespace EmojiForm
 
         private void recommend_Click(object sender, EventArgs e)
         {
+            emojiList.Clear();
             emojiList = EmojiService.SortbyFrequency();
             ShowEmojis(EmojiService.SortbyFrequency());
         }
@@ -96,15 +105,18 @@ namespace EmojiForm
             switch (queryCondi)
             {
                 case 0:
+                    emojiList.Clear();
                     emojiList = EmojiService.SearchByKeyword(textBox1.Text);
                     ShowEmojis(emojiList);
                     break;
                 case 1:
+                    emojiList.Clear();
                     emojiList = EmojiService.SearchByTargetPeople(textBox1.Text);
                     ShowEmojis(emojiList);
                     break;
                 case 2:
-                    emojiList=EmojiService.SearchBySeries(textBox1.Text);
+                    emojiList.Clear();
+                    emojiList =EmojiService.SearchBySeries(textBox1.Text);
                     ShowEmojis(emojiList);
                     break;
             }
@@ -117,7 +129,11 @@ namespace EmojiForm
             int r=dataGridViewImage.CurrentCell.RowIndex;
             int c= dataGridViewImage.CurrentCell.ColumnIndex;
             int location = r * col + c;
-            emojiSelected = emojiList[location];
+            if (location < emojiList.Count)
+            {
+                emojiSelected = emojiList[location];
+                selectedText.Text = emojiSelected.ToString();
+            }
         }
 
         private void likes_Click(object sender, EventArgs e)
@@ -128,10 +144,10 @@ namespace EmojiForm
 
         private void addlike_Click(object sender, EventArgs e)
         {
-            //将emojiSelected加入收藏夹，缺函数
+            EmojiService.FrequencyPlus(emojiSelected);
+            EmojiService.ModifyIsFavorite(emojiSelected,0);
+            MessageBox.Show("加入收藏夹成功");
         }
-
-
 
 
         private void bytarget_CheckedChanged(object sender, EventArgs e)

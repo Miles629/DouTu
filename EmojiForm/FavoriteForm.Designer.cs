@@ -32,16 +32,18 @@
             this.BtnChange = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.export = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.dataGridViewImage = new System.Windows.Forms.DataGridView();
-            this.panel1.SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.selectedText = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnChange
             // 
-            this.BtnChange.Location = new System.Drawing.Point(15, 17);
+            this.BtnChange.Location = new System.Drawing.Point(14, 14);
             this.BtnChange.Margin = new System.Windows.Forms.Padding(4);
             this.BtnChange.Name = "BtnChange";
             this.BtnChange.Size = new System.Drawing.Size(130, 50);
@@ -52,37 +54,27 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(15, 107);
+            this.btnDelete.Location = new System.Drawing.Point(13, 71);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(130, 50);
             this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "删除";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // export
             // 
-            this.export.Location = new System.Drawing.Point(15, 297);
+            this.export.Location = new System.Drawing.Point(13, 127);
             this.export.Name = "export";
             this.export.Size = new System.Drawing.Size(130, 50);
             this.export.TabIndex = 5;
             this.export.Text = "批量导出";
             this.export.UseVisualStyleBackColor = true;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.BtnChange);
-            this.panel1.Controls.Add(this.btnDelete);
-            this.panel1.Controls.Add(this.export);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(621, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(179, 450);
-            this.panel1.TabIndex = 9;
-            // 
             // imageList
             // 
             this.imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList.ImageSize = new System.Drawing.Size(100, 100);
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // dataGridViewImage
@@ -94,20 +86,56 @@
             this.dataGridViewImage.Name = "dataGridViewImage";
             this.dataGridViewImage.RowTemplate.Height = 30;
             this.dataGridViewImage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewImage.Size = new System.Drawing.Size(621, 450);
+            this.dataGridViewImage.Size = new System.Drawing.Size(1100, 690);
             this.dataGridViewImage.TabIndex = 8;
+            this.dataGridViewImage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewImage_CellContentClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(20, 190);
+            this.label1.Margin = new System.Windows.Forms.Padding(10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 18);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "当前选中：";
+            // 
+            // selectedText
+            // 
+            this.selectedText.AutoSize = true;
+            this.selectedText.Location = new System.Drawing.Point(20, 228);
+            this.selectedText.Margin = new System.Windows.Forms.Padding(10);
+            this.selectedText.Name = "selectedText";
+            this.selectedText.Size = new System.Drawing.Size(0, 18);
+            this.selectedText.TabIndex = 9;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.BtnChange);
+            this.flowLayoutPanel1.Controls.Add(this.btnDelete);
+            this.flowLayoutPanel1.Controls.Add(this.export);
+            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.selectedText);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(943, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(157, 690);
+            this.flowLayoutPanel1.TabIndex = 10;
             // 
             // FavoriteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1100, 690);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.dataGridViewImage);
-            this.Controls.Add(this.panel1);
             this.Name = "FavoriteForm";
             this.Text = "我的收藏";
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -117,8 +145,10 @@
         private System.Windows.Forms.Button BtnChange;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button export;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.DataGridView dataGridViewImage;
+        private System.Windows.Forms.Label selectedText;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
