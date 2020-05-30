@@ -57,16 +57,17 @@ namespace EmojiManagement
             using (var db = new EmojiContext())
             {
                 var query = db.Emojis.Where(o => o.Id == e.Id);
-                foreach(Emoji ee in query)
+                foreach (Emoji ee in query)
                 {
                     if (i == 0)
                     {
                         ee.IsFavorite = true;
-                    }else if (i == 1)
+                    }
+                    else if (i == 1)
                     {
                         ee.IsFavorite = false;
                     }
-                    
+
                 }
                 db.SaveChanges();
             }
@@ -100,7 +101,7 @@ namespace EmojiManagement
                     return true;
             }
         }
-        
+
 
         public static void DeleteEmoji()
         {
@@ -120,12 +121,12 @@ namespace EmojiManagement
         }
 
         //因为要用所以我先写了 蒋沁月
-        public static void ModifyEmoji(Emoji e,string key,string target,string series)
+        public static void ModifyEmoji(Emoji e, string key, string target, string series)
         {
             using (var db = new EmojiContext())
             {
                 var query = db.Emojis.Where(o => o.Id == e.Id);
-                foreach(Emoji ee in query)
+                foreach (Emoji ee in query)
                 {
                     ee.Keyword = key;
                     ee.TargetPeople = target;
