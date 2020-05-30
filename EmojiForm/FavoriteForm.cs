@@ -40,13 +40,20 @@ namespace EmojiForm
                 this.dataGridViewImage.Rows[r].Height = 100;//限定行宽
             }
 
-            //emojiList=
-           // ShowEmojis(emojiList);
+            emojiList = EmojiService.FavoriteEmoji();
+            ShowEmojis(emojiList);
         }
         private void ShowEmojis(List<Emoji> emojis)
         {
             //清空图片数据
             imageList.Images.Clear();
+            for (int r = 0; r < row; r++)
+            {
+                for (int c = 0; c < col; c++)
+                {
+                    this.dataGridViewImage[c, r].Value = null;
+                }
+            }
             //防止图片失真
             this.imageList.ColorDepth = ColorDepth.Depth32Bit;
             //将图片加入imageList
@@ -75,13 +82,44 @@ namespace EmojiForm
             int r = dataGridViewImage.CurrentCell.RowIndex;
             int c = dataGridViewImage.CurrentCell.ColumnIndex;
             int location = r * col + c;
-            emojiSelected = emojiList[location];
+            if (location < emojiList.Count)
+            {
+                emojiSelected = emojiList[location];
+                selectedText.Text = emojiSelected.ToString();
+            }
+            else
+            {
+                emojiSelected = null;
+                selectedText.Text = " ";
+            }
         }
 
         private void BtnChange_Click(object sender, EventArgs e)
         {
-            ModifyForm modiForm = new ModifyForm();
+            ModifyForm modiForm = new ModifyForm(emojiSelected);
             modiForm.ShowDialog();
+        }
+
+        private void dataGridViewImage_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int r = dataGridViewImage.CurrentCell.RowIndex;
+            int c = dataGridViewImage.CurrentCell.ColumnIndex;
+            int location = r * col + c;
+            if (location < emojiList.Count)
+            {
+                emojiSelected = emojiList[location];
+                selectedText.Text = emojiSelected.ToString();
+            }
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            EmojiService.ModifyIsFavorite(emojiSelected, 1);
+            MessageBox.Show("删除成功");
+            emojiList = EmojiService.FavoriteEmoji();
+            ShowEmojis(emojiList);
         }
     }
 }

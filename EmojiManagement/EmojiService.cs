@@ -48,6 +48,46 @@ namespace EmojiManagement
             }
         }
 
+        /// <summary>
+        /// 修改IsFavorite，参数i为0改为true，参数i为1改为false
+        /// 蒋沁月
+        /// </summary>
+        public static void ModifyIsFavorite(Emoji e, int i)
+        {
+            using (var db = new EmojiContext())
+            {
+                var query = db.Emojis.Where(o => o.Id == e.Id);
+                foreach(Emoji ee in query)
+                {
+                    if (i == 0)
+                    {
+                        ee.IsFavorite = true;
+                    }else if (i == 1)
+                    {
+                        ee.IsFavorite = false;
+                    }
+                    
+                }
+                db.SaveChanges();
+            }
+        }
+
+        //Frequency++ 蒋沁月
+        public static void FrequencyPlus(Emoji e)
+        {
+            using (var db = new EmojiContext())
+            {
+                var query = db.Emojis.Where(o => o.Id == e.Id);
+                foreach (Emoji ee in query)
+                {
+                    ee.Frequency++;
+                }
+                db.SaveChanges();
+            }
+
+        }
+
+
         //通过路径判断数据库中是否存在当前表情。
         public static bool Emojiexist(string path)
         {
@@ -79,9 +119,20 @@ namespace EmojiManagement
             }
         }
 
-        public static void ModifyEmoji()
+        //因为要用所以我先写了 蒋沁月
+        public static void ModifyEmoji(Emoji e,string key,string target,string series)
         {
-            //张智敏&马草原
+            using (var db = new EmojiContext())
+            {
+                var query = db.Emojis.Where(o => o.Id == e.Id);
+                foreach(Emoji ee in query)
+                {
+                    ee.Keyword = key;
+                    ee.TargetPeople = target;
+                    ee.Series = series;
+                }
+                db.SaveChanges();
+            }
 
         }
 

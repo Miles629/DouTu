@@ -44,6 +44,8 @@
             this.dataGridViewImage = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.selectedText = new System.Windows.Forms.Label();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).BeginInit();
@@ -62,7 +64,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(10);
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1015, 55);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1070, 55);
             this.flowLayoutPanel2.TabIndex = 13;
             // 
             // textBox1
@@ -172,11 +174,13 @@
             this.flowLayoutPanel1.Controls.Add(this.export);
             this.flowLayoutPanel1.Controls.Add(this.addlike);
             this.flowLayoutPanel1.Controls.Add(this.likes);
+            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.selectedText);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(865, 55);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(930, 55);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(150, 635);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(140, 635);
             this.flowLayoutPanel1.TabIndex = 20;
             // 
             // dataGridViewImage
@@ -188,7 +192,7 @@
             this.dataGridViewImage.Name = "dataGridViewImage";
             this.dataGridViewImage.RowTemplate.Height = 30;
             this.dataGridViewImage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewImage.Size = new System.Drawing.Size(859, 629);
+            this.dataGridViewImage.Size = new System.Drawing.Size(924, 629);
             this.dataGridViewImage.TabIndex = 21;
             this.dataGridViewImage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewImage_CellContentClick);
             // 
@@ -199,7 +203,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 55);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(3);
-            this.panel1.Size = new System.Drawing.Size(865, 635);
+            this.panel1.Size = new System.Drawing.Size(930, 635);
             this.panel1.TabIndex = 22;
             // 
             // imageList
@@ -208,11 +212,30 @@
             this.imageList.ImageSize = new System.Drawing.Size(100, 100);
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 234);
+            this.label1.Margin = new System.Windows.Forms.Padding(10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 18);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "当前选中：";
+            // 
+            // selectedText
+            // 
+            this.selectedText.AutoSize = true;
+            this.selectedText.Location = new System.Drawing.Point(10, 272);
+            this.selectedText.Margin = new System.Windows.Forms.Padding(10);
+            this.selectedText.Name = "selectedText";
+            this.selectedText.Size = new System.Drawing.Size(0, 18);
+            this.selectedText.TabIndex = 21;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1015, 690);
+            this.ClientSize = new System.Drawing.Size(1070, 690);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanel2);
@@ -221,6 +244,7 @@
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -244,6 +268,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label selectedText;
     }
 }
 

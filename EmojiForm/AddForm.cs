@@ -38,7 +38,19 @@ namespace EmojiForm
         private void button1_Click(object sender, EventArgs e)
         {
             Emoji newemoji = new Emoji(pathTextBox.Text, keywordTextBox.Text, seriesTextBox.Text, targetTextBox.Text, 0, false);
-            EmojiService.AddEmoji(newemoji);
+            try
+            {
+                EmojiService.AddEmoji(newemoji);
+                MessageBox.Show("添加成功");
+                pictureBox1.Image = null;
+                pathTextBox.Text = "";
+                keywordTextBox.Text = "";
+                seriesTextBox.Text = "";
+                targetTextBox.Text = "";
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
