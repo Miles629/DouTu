@@ -70,6 +70,7 @@
             this.export.TabIndex = 5;
             this.export.Text = "批量导出";
             this.export.UseVisualStyleBackColor = true;
+            this.export.Click += new System.EventHandler(this.export_Click);
             // 
             // imageList
             // 
@@ -84,6 +85,7 @@
             this.dataGridViewImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewImage.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewImage.Name = "dataGridViewImage";
+            this.dataGridViewImage.RowHeadersWidth = 62;
             this.dataGridViewImage.RowTemplate.Height = 30;
             this.dataGridViewImage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewImage.Size = new System.Drawing.Size(1100, 690);
