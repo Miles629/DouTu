@@ -67,25 +67,29 @@ namespace EmojiForm
             }
             //防止图片失真
             this.imageList.ColorDepth = ColorDepth.Depth32Bit;
-            //将图片加入imageList
-            foreach(Emoji e in emojis)
+            //当数据库图片不为空时，将图片加入imageList
+            if (emojis.Count != 0)
             {
-                this.imageList.Images.Add(Image.FromFile(e.Path));
-            }
-            //展示图片
-            int count = 0;
-            for (int r = 0; r < row; r++)
-            {
-                for (int c = 0; c < col; c++)
+                foreach (Emoji e in emojis)
                 {
-                    if (count < emojis.Count)
+                    this.imageList.Images.Add(Image.FromFile(e.Path));
+                }
+                //展示图片
+                int count = 0;
+                for (int r = 0; r < row; r++)
+                {
+                    for (int c = 0; c < col; c++)
                     {
-                        this.dataGridViewImage[c,r ].Value = imageList.Images[count++];
+                        if (count < emojis.Count)
+                        {
+                            this.dataGridViewImage[c, r].Value = imageList.Images[count++];
 
+                        }
+                        else return;
                     }
-                    else return;
                 }
             }
+            
         }
 
         private void import_Click(object sender, EventArgs e)
@@ -133,6 +137,7 @@ namespace EmojiForm
             {
                 emojiSelected = emojiList[location];
                 selectedText.Text = emojiSelected.ToString();
+                Clipboard.SetDataObject(new Bitmap(emojiSelected.Path));
             }
         }
 
