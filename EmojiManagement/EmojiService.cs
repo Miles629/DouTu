@@ -60,6 +60,7 @@ namespace EmojiManagement
                     return true;
             }
         }
+        
 
         public static void DeleteEmoji()
         {
@@ -81,6 +82,7 @@ namespace EmojiManagement
         public static void ModifyEmoji()
         {
             //张智敏&马草原
+
         }
 
         public static IQueryable<Emoji> AllEmojis(EmojiContext db)
