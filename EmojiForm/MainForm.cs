@@ -162,5 +162,10 @@ namespace EmojiForm
         {
             queryCondi = 0;
         }
+
+        private void export_Click(object sender, EventArgs e)
+        {
+            EmojiService.ExportEmoji();
+        }
     }
 }

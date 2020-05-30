@@ -121,5 +121,10 @@ namespace EmojiForm
             emojiList = EmojiService.FavoriteEmoji();
             ShowEmojis(emojiList);
         }
+
+        private void export_Click(object sender, EventArgs e)
+        {
+            EmojiService.ExportEmoji();
+        }
     }
 }

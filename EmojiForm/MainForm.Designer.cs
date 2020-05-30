@@ -41,11 +41,11 @@
             this.addlike = new System.Windows.Forms.Button();
             this.likes = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.selectedText = new System.Windows.Forms.Label();
             this.dataGridViewImage = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.selectedText = new System.Windows.Forms.Label();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).BeginInit();
@@ -147,6 +147,7 @@
             this.export.TabIndex = 17;
             this.export.Text = "批量导出";
             this.export.UseVisualStyleBackColor = true;
+            this.export.Click += new System.EventHandler(this.export_Click);
             // 
             // addlike
             // 
@@ -183,6 +184,25 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(140, 635);
             this.flowLayoutPanel1.TabIndex = 20;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 234);
+            this.label1.Margin = new System.Windows.Forms.Padding(10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 18);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "当前选中：";
+            // 
+            // selectedText
+            // 
+            this.selectedText.AutoSize = true;
+            this.selectedText.Location = new System.Drawing.Point(10, 272);
+            this.selectedText.Margin = new System.Windows.Forms.Padding(10);
+            this.selectedText.Name = "selectedText";
+            this.selectedText.Size = new System.Drawing.Size(0, 18);
+            this.selectedText.TabIndex = 21;
+            // 
             // dataGridViewImage
             // 
             this.dataGridViewImage.AllowUserToAddRows = false;
@@ -190,6 +210,7 @@
             this.dataGridViewImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewImage.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewImage.Name = "dataGridViewImage";
+            this.dataGridViewImage.RowHeadersWidth = 62;
             this.dataGridViewImage.RowTemplate.Height = 30;
             this.dataGridViewImage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewImage.Size = new System.Drawing.Size(924, 629);
@@ -211,25 +232,6 @@
             this.imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             this.imageList.ImageSize = new System.Drawing.Size(100, 100);
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 234);
-            this.label1.Margin = new System.Windows.Forms.Padding(10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 18);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "当前选中：";
-            // 
-            // selectedText
-            // 
-            this.selectedText.AutoSize = true;
-            this.selectedText.Location = new System.Drawing.Point(10, 272);
-            this.selectedText.Margin = new System.Windows.Forms.Padding(10);
-            this.selectedText.Name = "selectedText";
-            this.selectedText.Size = new System.Drawing.Size(0, 18);
-            this.selectedText.TabIndex = 21;
             // 
             // MainForm
             // 
