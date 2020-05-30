@@ -88,6 +88,24 @@ namespace EmojiManagement
             return db.Emojis;
         }
 
+        public static List<Emoji> GetAllEmojis()
+        {
+            using (var db = new EmojiContext())
+            {
+                var query = AllEmojis(db).ToList();
+                return query;
+            }
+        }
+        //返回数据库中为收藏的表情
+        public static List<Emoji> FavoriteEmoji()
+        {
+            using (var db = new EmojiContext())
+            {
+                var query = AllEmojis(db).Where(emo => emo.IsFavorite == true);
+                return query.ToList();
+            }
+        }
+
         public static List<Emoji> SortbyFrequency()
         {
             using (var db = new EmojiContext())
