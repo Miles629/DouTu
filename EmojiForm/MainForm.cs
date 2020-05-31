@@ -228,5 +228,20 @@ namespace EmojiForm
             ShowEmojis(EmojiService.SortbyFrequency());
             this.Refresh();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            EmojiService.DeleteEmoji(emojiSelected);
+            MessageBox.Show("删除成功");
+            emojiList = EmojiService.SortbyFrequency();
+            ShowEmojis(emojiList);
+
+        }
     }
 }
