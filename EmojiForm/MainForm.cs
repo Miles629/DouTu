@@ -72,7 +72,10 @@ namespace EmojiForm
             {
                 foreach (Emoji e in emojis)
                 {
-                    this.imageList.Images.Add(Image.FromFile(e.Path));
+                    if (e.Path != "")
+                    {
+                        this.imageList.Images.Add(Image.FromFile(e.Path));
+                    }
                 }
                 //展示图片
                 int count = 0;
