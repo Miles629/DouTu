@@ -51,6 +51,10 @@ namespace EmojiForm
             {
                 MessageBox.Show(ex.ToString());
             }
+            //MainForm mm = new MainForm();
+            // mm.ShowEmojis(MainForm.emojiList);
+            //((MainForm)this.Owner).Refresh();
+                this.Close();
         }
     }
 }

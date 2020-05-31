@@ -46,6 +46,7 @@
             this.dataGridViewImage = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).BeginInit();
@@ -60,6 +61,7 @@
             this.flowLayoutPanel2.Controls.Add(this.byseries);
             this.flowLayoutPanel2.Controls.Add(this.search);
             this.flowLayoutPanel2.Controls.Add(this.recommend);
+            this.flowLayoutPanel2.Controls.Add(this.button1);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -233,6 +235,16 @@
             this.imageList.ImageSize = new System.Drawing.Size(100, 100);
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(825, 13);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(89, 36);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "刷新";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -272,6 +284,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label selectedText;
+        private System.Windows.Forms.Button button1;
     }
 }
 
