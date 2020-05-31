@@ -44,7 +44,7 @@ namespace EmojiManagement
             return this.Frequency.CompareTo(other.Frequency);
         }
 
-        //判断文件类型，看到了现成的我就直接copy过来了
+        //判断文件类型
         public bool IsImage(string path)
         { // *.BMP;*.JPG;*.GIF;*.jpeg;*.ico
             string ext = System.IO.Path.GetExtension(path).ToUpper();

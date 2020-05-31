@@ -9,7 +9,7 @@ namespace EmojiOCR
     class EmojiOCR
     {
         // 通用文字识别
-        public static string generalBasic()
+        public static string generalBasic(string path)
         {
             string token = "24.3640467825457b4ca62361858bc7e091.2592000.1593512782.282335-20158843";
             string host = "https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic?access_token=" + token;
@@ -18,7 +18,7 @@ namespace EmojiOCR
             request.Method = "post";
             request.KeepAlive = true;
             // 图片的base64编码
-            string base64 = getFileBase64("E:\\学习\\大二下\\软件构造基础\\大作业\\Resources\\阿瓦达索命+所有+生气-打架.jpg");
+            string base64 = getFileBase64(path);
             String str = "image=" + HttpUtility.UrlEncode(base64);
             byte[] buffer = encoding.GetBytes(str);
             request.ContentLength = buffer.Length;
