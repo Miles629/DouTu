@@ -89,7 +89,7 @@ namespace EmojiManagement
         }
 
 
-        //通过路径判断数据库中是否存在当前表情。
+        //通过路径判断数据库中是否存在当前表情。马草原
         public static bool Emojiexist(string path)
         {
             using (var db = new EmojiContext())
@@ -137,7 +137,7 @@ namespace EmojiManagement
             }
 
         }
-
+        //返回所有表情 马草原
         public static IQueryable<Emoji> AllEmojis(EmojiContext db)
         {
             return db.Emojis;
@@ -151,7 +151,7 @@ namespace EmojiManagement
                 return query;
             }
         }
-        //返回数据库中为收藏的表情
+        //返回数据库中为收藏的表情 马草原
         public static List<Emoji> FavoriteEmoji()
         {
             using (var db = new EmojiContext())
@@ -161,6 +161,7 @@ namespace EmojiManagement
             }
         }
 
+        //根据表情热度进行排序的结果 马草原
         public static List<Emoji> SortbyFrequency()
         {
             using (var db = new EmojiContext())
@@ -178,8 +179,14 @@ namespace EmojiManagement
             //张智敏&马草原
             using (var db = new EmojiContext())
             {
-                var query = AllEmojis(db)
+                var query1 = AllEmojis(db)
                   .Where(e => e.Keyword == info);
+                var query2 = AllEmojis(db)
+                  .Where(e => e.Series == info);
+                var query3 = AllEmojis(db)
+                  .Where(e => e.TargetPeople == info);
+                var query = query1.Concat(query2);
+                query = query.Concat(query3);
                 return query.ToList();
             }
 
