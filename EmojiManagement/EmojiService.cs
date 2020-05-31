@@ -103,14 +103,15 @@ namespace EmojiManagement
         }
 
 
-        public static void DeleteEmoji()
+        public static void DeleteEmoji(Emoji emoji)
         {
             //张智敏&马草原
             try
             {
                 using (var db = new EmojiContext())
                 {
-
+                    db.Emojis.Remove(emoji);
+                    db.SaveChanges();
                 }
             }
             catch (Exception e)
