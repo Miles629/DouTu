@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EmojiManagement;
+using Ubiety.Dns.Core;
 
 namespace EmojiForm
 {
@@ -26,7 +28,7 @@ namespace EmojiForm
         /// /// 蒋沁月说只需要一个存储当前展示的表情列表就行了
         /// </summary>
         public static List<Emoji> emojiList = new List<Emoji>();
-
+        public static List<String> pathList = new List<String>();
         //当前选中的表情
         Emoji emojiSelected=null;
 
@@ -53,9 +55,53 @@ namespace EmojiForm
             ShowEmojis(EmojiService.SortbyFrequency());
 
         }
-
-        private void ShowEmojis(List<Emoji> emojis)
+        private void showFilePicture(/*List<string> imagePathList*/)//需要传入路径的list
         {
+            //显示所有本地图片
+            imageList.Images.Clear();
+            DirectoryInfo dir = new DirectoryInfo("..\\Resources");//获取目录
+            FileInfo[] fileinfo = dir.GetFiles("*.JPG");//获取文件夹中的图片文件
+
+            //防止图片失真
+            //this.imageList.ColorDepth = ColorDepth.Depth32Bit;
+            foreach (FileInfo file in fileinfo)
+            {
+                pathList.Add(file.FullName);//图片路径
+                this.imageList.Images.Add(Image.FromFile(file.FullName));
+            }
+            for (int c = 0; c < col; c++)
+            {
+                DataGridViewImageColumn ic = new DataGridViewImageColumn();
+                this.dataGridViewImage.Columns.Add(ic);
+                this.dataGridViewImage.Columns[c].Width = 100;//限定列宽
+                this.dataGridViewImage.Columns[c].DefaultCellStyle.NullValue = null;//当没有数据时，不会显示红叉，cell.Value 必须是null，对于空串这句无效
+            }
+            //增加行
+            for (int r = 0; r < row; r++)
+            {
+                this.dataGridViewImage.Rows.Add();//增加行
+                this.dataGridViewImage.Rows[r].Height = 100;//限定行宽
+            }
+            //展示imageList中的表情
+            int count = 0;
+            for (int i = 0; i < row; i++)
+            {
+                for (int j = 0; j < col; j++)
+                {
+                    if (count < pathList.Count)
+                    {
+                        this.dataGridViewImage[j, i].Value = imageList.Images[count++];
+
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
+        }
+            public void ShowEmojis(List<Emoji> emojis)
+            {
             //清空图片数据
             imageList.Images.Clear();
             for (int r = 0; r < row; r++)
@@ -92,7 +138,9 @@ namespace EmojiForm
                     }
                 }
             }
-            
+            this.Refresh();
+       
+
         }
 
         private void import_Click(object sender, EventArgs e)
@@ -103,9 +151,7 @@ namespace EmojiForm
 
         private void recommend_Click(object sender, EventArgs e)
         {
-            emojiList.Clear();
-            emojiList = EmojiService.SortbyFrequency();
-            ShowEmojis(EmojiService.SortbyFrequency());
+            showFilePicture(/*recommendList*/);
         }
         private void search_Click(object sender, EventArgs e)
         {
@@ -174,6 +220,28 @@ namespace EmojiForm
         private void export_Click(object sender, EventArgs e)
         {
             EmojiService.ExportEmoji();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            emojiList = EmojiService.SortbyFrequency();
+            ShowEmojis(EmojiService.SortbyFrequency());
+            this.Refresh();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            EmojiService.DeleteEmoji(emojiSelected);
+            MessageBox.Show("删除成功");
+            emojiList = EmojiService.SortbyFrequency();
+            ShowEmojis(emojiList);
+
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using EmojiManagement;
@@ -33,21 +34,58 @@ namespace EmojiManagement
                     //拷贝图片到指定文件夹
                     string picPath = emoji.Path;//这里记得传入图片的路径,通过可视化操作选中图片传参，参数记得改一下奥席诺同学
                     string filename = Path.GetFileName(picPath);
-                    string str = System.Environment.CurrentDirectory;
-                    string targetPath = @"str" + filename;
-                    //在数据库里添加这个表情的信息
+                    //string str = System.Environment.CurrentDirectory;
+                    string str3 = Directory.GetCurrentDirectory();
+
+                    string targetPath;//= "str3//picture" + filename;
+                    if (Directory.Exists("str3\\" + "picture"))
+                    {
+                        targetPath = "str3//picture" ;
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory("str3\\" + "picture");
+                        targetPath = "str3//picture";
+                    }
+
+
+
+                    CopyDirectory(picPath, targetPath);
+                    emoji.Path = targetPath+filename;
                     db.Emojis.Add(emoji);
                     db.SaveChanges();
                 }
-                return;
+            }
+            catch (Exception e) { }
+        }
+        public static void CopyDirectory(string srcPath, string destPath)
+        {
+            try
+            {
+                DirectoryInfo dir = new DirectoryInfo(srcPath);
+                FileSystemInfo[] fileinfo = dir.GetFileSystemInfos();  //获取目录下（不包含子目录）的文件和子目录
+                foreach (FileSystemInfo i in fileinfo)
+                {
+                    if (i is DirectoryInfo)     //判断是否文件夹
+                    {
+                        if (!Directory.Exists(destPath + "\\" + i.Name))
+                        {
+                            Directory.CreateDirectory(destPath + "\\" + i.Name);   //目标目录下不存在此文件夹即创建子文件夹
+                        }
+                        CopyDirectory(i.FullName, destPath + "\\" + i.Name);    //递归调用复制子文件夹
+                    }
+                    else
+                    {
+                        File.Copy(i.FullName, destPath + "\\" + i.Name, true);      //不是文件夹即复制文件，true表示可以覆盖同名文件
+                    }
+                }
             }
             catch (Exception e)
             {
-                //TODO 需要更加错误类型返回不同错误信息
-                //throw new ApplicationException($"添加错误: {e.Message}");
+                throw;
             }
         }
-
+    
         /// <summary>
         /// 修改IsFavorite，参数i为0改为true，参数i为1改为false
         /// 蒋沁月

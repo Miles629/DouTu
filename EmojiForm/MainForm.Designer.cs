@@ -36,6 +36,7 @@
             this.byseries = new System.Windows.Forms.RadioButton();
             this.search = new System.Windows.Forms.Button();
             this.recommend = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.import = new System.Windows.Forms.Button();
             this.export = new System.Windows.Forms.Button();
             this.addlike = new System.Windows.Forms.Button();
@@ -46,6 +47,7 @@
             this.dataGridViewImage = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).BeginInit();
@@ -60,6 +62,8 @@
             this.flowLayoutPanel2.Controls.Add(this.byseries);
             this.flowLayoutPanel2.Controls.Add(this.search);
             this.flowLayoutPanel2.Controls.Add(this.recommend);
+            this.flowLayoutPanel2.Controls.Add(this.button1);
+            this.flowLayoutPanel2.Controls.Add(this.button2);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -129,6 +133,16 @@
             this.recommend.UseVisualStyleBackColor = true;
             this.recommend.Click += new System.EventHandler(this.recommend_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(825, 13);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(89, 36);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "刷新";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // import
             // 
             this.import.Location = new System.Drawing.Point(3, 3);
@@ -193,6 +207,7 @@
             this.label1.Size = new System.Drawing.Size(98, 18);
             this.label1.TabIndex = 20;
             this.label1.Text = "当前选中：";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // selectedText
             // 
@@ -233,6 +248,16 @@
             this.imageList.ImageSize = new System.Drawing.Size(100, 100);
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(920, 13);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(93, 36);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "删除";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -272,6 +297,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label selectedText;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
