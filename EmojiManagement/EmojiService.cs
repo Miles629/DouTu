@@ -148,7 +148,12 @@ namespace EmojiManagement
             {
                 using (var db = new EmojiContext())
                 {
-                    db.Emojis.Remove(emoji);
+
+                    var query = db.Emojis.Where(o => o.Id == emoji.Id);
+                    foreach (Emoji e in query)
+                    {
+                        db.Emojis.Remove(e);
+                    }
                     db.SaveChanges();
                 }
             }
@@ -211,7 +216,7 @@ namespace EmojiManagement
         }
 
 
-        //这个是一个综合的搜索，先空着
+        //这个是一个综合的搜索
         public static List<Emoji> SearchEmoji(string info)
         {
             //张智敏&马草原
