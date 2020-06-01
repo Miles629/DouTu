@@ -41,14 +41,10 @@ namespace EmojiOCR
             return baser64;
         }
 
-        //public static void Main(string[] args)
-        //{
-        //    generalBasic();
-        //    Class1.getAccessToken();
-        //}
-        //static void Main(string[] args)
-        //{
-        //    Console.WriteLine("Hello World!");
-        //}
+        public static string Main(string[] args)
+        {
+            //这里要考虑下怎么返回结果。直接返回string的话好像运行不了。
+            return generalBasic(args[0]);
+        }
     }
 }
