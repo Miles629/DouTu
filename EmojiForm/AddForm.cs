@@ -48,25 +48,29 @@ namespace EmojiForm
         private void AddForm_DragDrop(object sender, DragEventArgs e)
         {
             string path = ((System.Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
-            this.pictureBox1.Image = Image.FromFile(path);
-            string a= @"C:\Users\Administrator\Desktop\把卡.jpg";//C:\Users\Administrator\Desktop\DouTu
-            pathTextBox.Text = path;
+
             //这里调用OCR
             try
             {
-                if (a.Equals(path))
-                    MessageBox.Show("a就=path");
-                else
-                {
-                    MessageBox.Show(a + "\\" + path);
-                }
-                a = Getkeybyocr(a);
+                string a = Getkeybyocr(path);
                 keywordTextBox.Text = a;
             }
-            catch(IOException ex)
+            catch (IOException ex)
             {
-                MessageBox.Show("ocr错误！传入地址："+path+ex.Message);
+                MessageBox.Show("ocr错误！传入地址：" + path + ex.Message);
             }
+
+            this.pictureBox1.Image = Image.FromFile(path);
+            pathTextBox.Text = path;
+
+
+
+            string picPath = path;//这里记得传入图片的路径,通过可视化操作选中图片传参，参数记得改一下奥席诺同学
+            string filename = Path.GetFileName(picPath);
+            //string str = System.Environment.CurrentDirectory;
+            string str3 = Directory.GetCurrentDirectory();
+
+
             
         }
         public static string generalBasic(string path)
