@@ -3,14 +3,14 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Web;
-
-namespace ocr_emoji
+namespace EmojiManagement
 {
-    class EmojiOCR
+    public class EmojiOCR
     {
         // 通用文字识别
-        public static string generalBasic(string path)
+        public static string GetOcr(string path)
         {
+            Console.WriteLine("run");
             string token = "24.3640467825457b4ca62361858bc7e091.2592000.1593512782.282335-20158843";
             string host = "https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic?access_token=" + token;
             Encoding encoding = Encoding.Default;
@@ -18,12 +18,16 @@ namespace ocr_emoji
             request.Method = "post";
             request.KeepAlive = true;
             // 图片的base64编码
+            Console.WriteLine("run2:"+path);
             string base64 = getFileBase64(path);
             String str = "image=" + HttpUtility.UrlEncode(base64);
+            Console.WriteLine("run3");
             byte[] buffer = encoding.GetBytes(str);
             request.ContentLength = buffer.Length;
             request.GetRequestStream().Write(buffer, 0, buffer.Length);
+            Console.WriteLine("run4");
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Console.WriteLine("run5");
             StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.Default);
             string result = reader.ReadToEnd();
             //Console.WriteLine("通用文字识别:");
@@ -40,13 +44,28 @@ namespace ocr_emoji
             filestream.Close();
             return baser64;
         }
-
-        public static void Main(string[] args)
+        public static string Getkeybyocr(string s)
         {
-            //这里要考虑下怎么返回结果。直接返回string的话好像运行不了。
-            Console.WriteLine(generalBasic(@"C:\Users\miles\Desktop\把卡.jpg"));
-            return;
-            //return generalBasic(args[0]);
+            try
+            {
+                string Path = s;
+                string a = GetOcr(Path);
+                Console.WriteLine(a);
+                byte[] byteArray = System.Text.Encoding.Default.GetBytes(a);
+                string str = System.Text.Encoding.Default.GetString(byteArray);
+                Console.WriteLine(str);
+                byte[] re = UTF32Encoding.Convert(UTF8Encoding.UTF8, UTF32Encoding.Default, byteArray);
+                str = System.Text.Encoding.Default.GetString(re);
+                Console.WriteLine(str);
+                string[] key = str.Split('"');
+                Console.WriteLine(key[9]);
+                return key[9];
+            }
+            catch(Exception e )
+            {
+                throw new Exception("cuowu");
+            }
+
         }
     }
 }

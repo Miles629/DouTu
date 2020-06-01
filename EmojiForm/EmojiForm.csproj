@@ -15,6 +15,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -92,6 +93,7 @@
     </Reference>
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -155,6 +157,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\EmojiManagement.Emoji.datasource" />
@@ -178,6 +181,10 @@
     <ProjectReference Include="..\EmojiManagement\EmojiManagement.csproj">
       <Project>{c81ab8ea-d764-4f23-809b-029ff8365341}</Project>
       <Name>EmojiManagement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ocrfreamwork\ocrfreamwork.csproj">
+      <Project>{ac01f93e-1841-4545-8bc6-d73387f44f42}</Project>
+      <Name>ocrfreamwork</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

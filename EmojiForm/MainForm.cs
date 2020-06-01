@@ -201,12 +201,20 @@ namespace EmojiForm
             int r=dataGridViewImage.CurrentCell.RowIndex;
             int c= dataGridViewImage.CurrentCell.ColumnIndex;
             int location = r * col + c;
-            if (location < emojiList.Count)
+            try
             {
-                emojiSelected = emojiList[location];
-                selectedText.Text = emojiSelected.ToString();
-                Clipboard.SetDataObject(new Bitmap(emojiSelected.Path));
+                if (location < emojiList.Count)
+                {
+                    emojiSelected = emojiList[location];
+                    selectedText.Text = emojiSelected.ToString();
+                    Clipboard.SetDataObject(new Bitmap(emojiSelected.Path));
+                }
             }
+            catch
+            {
+                MessageBox.Show("路径形式违法！");
+            }
+
         }
 
         private void likes_Click(object sender, EventArgs e)
@@ -255,11 +263,19 @@ namespace EmojiForm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            emojiList.Clear();
-            EmojiService.DeleteEmoji(emojiSelected);
-            MessageBox.Show("删除成功");
-            emojiList = EmojiService.SortbyFrequency();
-            ShowEmojis(emojiList);
+            try
+            {
+                emojiList.Clear();
+                EmojiService.DeleteEmoji(emojiSelected);
+                MessageBox.Show("删除成功");
+                emojiList = EmojiService.SortbyFrequency();
+                ShowEmojis(emojiList);
+            }
+            catch
+            {
+                MessageBox.Show("删除错误！");
+            }
+
 
         }
     }
