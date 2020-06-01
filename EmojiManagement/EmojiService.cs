@@ -22,7 +22,7 @@ namespace EmojiManagement
 
 
         public EmojiService() { }
-     
+
         //从文件中添加图片
         public static void AddEmoji(Emoji emoji)
         {
@@ -31,40 +31,32 @@ namespace EmojiManagement
             {
                 using (var db = new EmojiContext())
                 {
-                    
-                    string src = emoji.Path;
-                    string filename = Path.GetFileName(src);
-                    string dest = @"C:\Users\Administrator\Desktop\DouTu\test\"+filename;
-
-                    //File.Copy(src, dest);
-                    //string pLocalFilePath = "";//要复制的文件路径
-                   // string pSaveFilePath = "";//指定存储的路径
-                    if (File.Exists(src))//必须判断要复制的文件是否存在
-                    {
-                        File.Copy(src, dest, true);//三个参数分别是源文件路径，存储路径，若存储路径有相同文件是否替换
-                    }
                     //拷贝图片到指定文件夹
-                    //string picPath = emoji.Path;//这里记得传入图片的路径,通过可视化操作选中图片传参，参数记得改一下奥席诺同学
+                    string picPath = emoji.Path;//这里记得传入图片的路径,通过可视化操作选中图片传参，参数记得改一下奥席诺同学
+                    string filename = Path.GetFileName(picPath);
+                    //string str = System.Environment.CurrentDirectory;
+                    string str3 = Directory.GetCurrentDirectory();
 
-                    ////string str = System.Environment.CurrentDirectory;
-                    //string str3 = Directory.GetCurrentDirectory();
-                    //string targetPath;//= "str3//picture" + filename;
-                    //if (Directory.Exists("str3\\" + "picture"))
-                    //{
-                    //    targetPath = "str3//picture";
-                    //}
-                    //else
-                    //{
-                    //    Directory.CreateDirectory("str3\\" + "picture");
-                    //    targetPath = "str3//picture";
-                    //}
-                    //CopyDirectory(picPath, targetPath);
-                    emoji.Path = dest + filename;
+                    string targetPath;//= "str3//picture" + filename;
+                    if (Directory.Exists("str3\\" + "picture"))
+                    {
+                        targetPath = "str3//picture" ;
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory("str3\\" + "picture");
+                        targetPath = "str3//picture";
+                    }
+
+
+
+                    CopyDirectory(picPath, targetPath);
+                    emoji.Path = targetPath+filename;
                     db.Emojis.Add(emoji);
                     db.SaveChanges();
                 }
             }
-            catch (Exception e) { throw new ApplicationException($"错误!"); }
+            catch (Exception e) { }
         }
         public static void CopyDirectory(string srcPath, string destPath)
         {
@@ -147,19 +139,7 @@ namespace EmojiManagement
                     return true;
             }
         }
-        public static void DeleteNull()
-        {
-            using (var db = new EmojiContext())
-            {
 
-                var query = db.Emojis.Where(o => o.Id == null);
-                foreach (Emoji e in query)
-                {
-                    db.Emojis.Remove(e);
-                }
-                db.SaveChanges();
-            }
-        }
 
         public static void DeleteEmoji(Emoji emoji)
         {
@@ -168,12 +148,7 @@ namespace EmojiManagement
             {
                 using (var db = new EmojiContext())
                 {
-
-                    var query = db.Emojis.Where(o => o.Id == emoji.Id);
-                    foreach (Emoji e in query)
-                    {
-                        db.Emojis.Remove(e);
-                    }
+                    db.Emojis.Remove(emoji);
                     db.SaveChanges();
                 }
             }
@@ -183,7 +158,6 @@ namespace EmojiManagement
                 throw new ApplicationException($"删除订单错误!");
             }
         }
-
 
         //因为要用所以我先写了 蒋沁月
         public static void ModifyEmoji(Emoji e, string key, string target, string series)
@@ -237,7 +211,7 @@ namespace EmojiManagement
         }
 
 
-        //这个是一个综合的搜索
+        //这个是一个综合的搜索，先空着
         public static List<Emoji> SearchEmoji(string info)
         {
             //张智敏&马草原
