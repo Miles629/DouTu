@@ -33,7 +33,7 @@ namespace EmojiManagement
                 {
                     string src = emoji.Path;
                     string filename = Path.GetFileName(src);
-                    string dest = @"C:\Users\Administrator\Desktop\DouTu\test\" + filename;
+                    string dest = @"D:\projects\.netprojects\DouTu\test\" + filename;
 
                     //File.Copy(src, dest);
                     //string pLocalFilePath = "";//要复制的文件路径
@@ -108,7 +108,8 @@ namespace EmojiManagement
             using (var db = new EmojiContext())
             {
 
-                var query = db.Emojis.Where(o => o.Id == null);
+                var query = db.Emojis.Where(o => o.Id == null || o.IsFavorite == null ||
+                            o.Path == null || o.Keyword == null);
                 foreach (Emoji e in query)
                 {
                     db.Emojis.Remove(e);
@@ -154,7 +155,7 @@ namespace EmojiManagement
             {
                 using (var db = new EmojiContext())
                 {
-                    var query = db.Emojis.Where(o => o.Id == e.Id);
+                    var query = db.Emojis.Where(o => o.Id == emoji.Id);
                     foreach (Emoji ee in query)
                     {
                     db.Emojis.Remove(ee);

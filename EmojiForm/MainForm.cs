@@ -61,9 +61,7 @@ namespace EmojiForm
                 emojiList = EmojiService.SortbyFrequency();
                 ShowEmojis(EmojiService.SortbyFrequency());
             }
-            //展示热门表情
-            emojiList = EmojiService.SortbyFrequency();
-            ShowEmojis(EmojiService.SortbyFrequency());
+
 
         }
         private void showFilePicture(/*List<string> imagePathList*/)//需要传入路径的list
@@ -125,6 +123,8 @@ namespace EmojiForm
             //防止图片失真
             this.imageList.ColorDepth = ColorDepth.Depth32Bit;
             //当数据库图片不为空时，将图片加入imageList
+
+            int realcount = 0;
             if (emojis.Count != 0)
             {
                 foreach (Emoji e in emojis)
@@ -134,10 +134,12 @@ namespace EmojiForm
                         try
                         {
                             this.imageList.Images.Add(Image.FromFile(e.Path));
+                            realcount++;
                         }
                         catch (System.IO.FileNotFoundException) { }
                     }
                 }
+                Console.WriteLine("real:" + realcount+"emojicount:"+emojis.Count);
                 
                 //展示图片
                 int count = 0;
@@ -145,7 +147,7 @@ namespace EmojiForm
                 {
                     for (int c = 0; c < col; c++)
                     {
-                        if (count < emojis.Count)
+                        if (count < realcount)
                         {
                             this.dataGridViewImage[c, r].Value = imageList.Images[count++];
 
@@ -241,6 +243,7 @@ namespace EmojiForm
 
         private void button1_Click(object sender, EventArgs e)
         {
+            EmojiService.DeleteNull();
             emojiList = EmojiService.SortbyFrequency();
             ShowEmojis(EmojiService.SortbyFrequency());
             this.Refresh();

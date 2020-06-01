@@ -60,6 +60,7 @@ namespace EmojiForm
                 MessageBox.Show("ocr错误！传入地址：" + path + ex.Message);
             }
 
+
             this.pictureBox1.Image = Image.FromFile(path);
             pathTextBox.Text = path;
 
