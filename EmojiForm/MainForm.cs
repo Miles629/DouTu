@@ -49,7 +49,18 @@ namespace EmojiForm
                 this.dataGridViewImage.Rows.Add();//增加行
                 this.dataGridViewImage.Rows[r].Height = 100;//限定行宽
             }
-
+            try
+            {
+                EmojiService.DeleteNull();
+                emojiList = EmojiService.SortbyFrequency();
+                ShowEmojis(EmojiService.SortbyFrequency());
+            }
+            catch
+            {
+                EmojiService.DeleteNull();
+                emojiList = EmojiService.SortbyFrequency();
+                ShowEmojis(EmojiService.SortbyFrequency());
+            }
             //展示热门表情
             emojiList = EmojiService.SortbyFrequency();
             ShowEmojis(EmojiService.SortbyFrequency());

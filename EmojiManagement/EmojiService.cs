@@ -103,6 +103,20 @@ namespace EmojiManagement
             }
         }
 
+        public static void DeleteNull()
+        {
+            using (var db = new EmojiContext())
+            {
+
+                var query = db.Emojis.Where(o => o.Id == null);
+                foreach (Emoji e in query)
+                {
+                    db.Emojis.Remove(e);
+                }
+                db.SaveChanges();
+            }
+        }
+
         //Frequency++ 蒋沁月
         public static void FrequencyPlus(Emoji e)
         {
@@ -140,7 +154,11 @@ namespace EmojiManagement
             {
                 using (var db = new EmojiContext())
                 {
-                    db.Emojis.Remove(emoji);
+                    var query = db.Emojis.Where(o => o.Id == e.Id);
+                    foreach (Emoji ee in query)
+                    {
+                    db.Emojis.Remove(ee);
+                    }
                     db.SaveChanges();
                 }
             }
