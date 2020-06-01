@@ -130,7 +130,11 @@ namespace EmojiForm
                 {
                     if (e.Path != "")
                     {
-                        this.imageList.Images.Add(Image.FromFile(e.Path));
+                        try
+                        {
+                            this.imageList.Images.Add(Image.FromFile(e.Path));
+                        }
+                        catch (System.IO.FileNotFoundException) { }
                     }
                 }
                 //展示图片

@@ -49,7 +49,7 @@ namespace EmojiForm
         {
             string path = ((System.Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
             this.pictureBox1.Image = Image.FromFile(path);
-            string a= @"C:\Users\miles\Desktop\把卡.jpg";
+            string a= @"C:\Users\Administrator\Desktop\把卡.jpg";//C:\Users\Administrator\Desktop\DouTu
             pathTextBox.Text = path;
             //这里调用OCR
             try
