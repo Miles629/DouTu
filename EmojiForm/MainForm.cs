@@ -49,20 +49,10 @@ namespace EmojiForm
                 this.dataGridViewImage.Rows.Add();//增加行
                 this.dataGridViewImage.Rows[r].Height = 100;//限定行宽
             }
-            try
-            {
-                EmojiService.DeleteNull();
-                emojiList = EmojiService.SortbyFrequency();
-                ShowEmojis(EmojiService.SortbyFrequency());
-            }
-            catch
-            {
-                EmojiService.DeleteNull();
-                emojiList = EmojiService.SortbyFrequency();
-                ShowEmojis(EmojiService.SortbyFrequency());
-            }
-            //展示热门表情
 
+            //展示热门表情
+            emojiList = EmojiService.SortbyFrequency();
+            ShowEmojis(EmojiService.SortbyFrequency());
 
         }
         private void showFilePicture(/*List<string> imagePathList*/)//需要传入路径的list
@@ -134,28 +124,19 @@ namespace EmojiForm
                     }
                 }
                 //展示图片
-                try
+                int count = 0;
+                for (int r = 0; r < row; r++)
                 {
-                    int count = 0;
-                    for (int r = 0; r < row; r++)
+                    for (int c = 0; c < col; c++)
                     {
-                        for (int c = 0; c < col; c++)
+                        if (count < emojis.Count)
                         {
-                            if (count < emojis.Count)
-                            {
-                                this.dataGridViewImage[c, r].Value = imageList.Images[count++];
+                            this.dataGridViewImage[c, r].Value = imageList.Images[count++];
 
-                            }
-                            else return;
                         }
+                        else return;
                     }
                 }
-                catch
-                {
-                    Exception e = new Exception();
-
-                }
-
             }
             this.Refresh();
        
@@ -201,20 +182,12 @@ namespace EmojiForm
             int r=dataGridViewImage.CurrentCell.RowIndex;
             int c= dataGridViewImage.CurrentCell.ColumnIndex;
             int location = r * col + c;
-            try
+            if (location < emojiList.Count)
             {
-                if (location < emojiList.Count)
-                {
-                    emojiSelected = emojiList[location];
-                    selectedText.Text = emojiSelected.ToString();
-                    Clipboard.SetDataObject(new Bitmap(emojiSelected.Path));
-                }
+                emojiSelected = emojiList[location];
+                selectedText.Text = emojiSelected.ToString();
+                Clipboard.SetDataObject(new Bitmap(emojiSelected.Path));
             }
-            catch
-            {
-                MessageBox.Show("路径形式违法！");
-            }
-
         }
 
         private void likes_Click(object sender, EventArgs e)
@@ -263,19 +236,11 @@ namespace EmojiForm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                emojiList.Clear();
-                EmojiService.DeleteEmoji(emojiSelected);
-                MessageBox.Show("删除成功");
-                emojiList = EmojiService.SortbyFrequency();
-                ShowEmojis(emojiList);
-            }
-            catch
-            {
-                MessageBox.Show("删除错误！");
-            }
-
+            emojiList.Clear();
+            EmojiService.DeleteEmoji(emojiSelected);
+            MessageBox.Show("删除成功");
+            emojiList = EmojiService.SortbyFrequency();
+            ShowEmojis(emojiList);
 
         }
     }
