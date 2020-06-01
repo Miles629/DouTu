@@ -26,8 +26,8 @@ namespace EmojiOCR
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.Default);
             string result = reader.ReadToEnd();
-            Console.WriteLine("通用文字识别:");
-            Console.WriteLine(result);
+            //Console.WriteLine("通用文字识别:");
+            //Console.WriteLine(result);
             return result;
         }
 

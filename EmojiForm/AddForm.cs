@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EmojiManagement;
+using MySqlX.XDevAPI.Common;
+//using EmojiOCR;
+//这里.net freamwork 的东西好像不能引用.net core的
 
 namespace EmojiForm
 {
@@ -19,6 +22,12 @@ namespace EmojiForm
             DragEnter += AddForm_DragEnter;
             InitializeComponent();
         }
+
+        //private string GetOCR(string path)
+        //{
+        //    string result =EmojiOCR.generalBasic(path);
+        //    return result;
+        //}
 
         private void AddForm_DragDrop(object sender, DragEventArgs e)
         {
