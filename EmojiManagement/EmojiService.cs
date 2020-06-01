@@ -32,31 +32,27 @@ namespace EmojiManagement
                 using (var db = new EmojiContext())
                 {
                     //拷贝图片到指定文件夹
-                    string picPath = emoji.Path;//这里记得传入图片的路径,通过可视化操作选中图片传参，参数记得改一下奥席诺同学
-                    string filename = Path.GetFileName(picPath);
-                    //string str = System.Environment.CurrentDirectory;
-                    string str3 = Directory.GetCurrentDirectory();
-
-                    string targetPath;//= "str3//picture" + filename;
-                    if (Directory.Exists("str3\\" + "picture"))
-                    {
-                        targetPath = "str3//picture" ;
-                    }
-                    else
-                    {
-                        Directory.CreateDirectory("str3\\" + "picture");
-                        targetPath = "str3//picture";
-                    }
-
-
-
-                    CopyDirectory(picPath, targetPath);
-                    emoji.Path = targetPath+filename;
+                    //string picPath = emoji.Path;//这里记得传入图片的路径,通过可视化操作选中图片传参，参数记得改一下奥席诺同学
+                    //string filename = Path.GetFileName(picPath);
+                    ////string str = System.Environment.CurrentDirectory;
+                    //string str3 = Directory.GetCurrentDirectory();
+                    //string targetPath;//= "str3//picture" + filename;
+                    //if (Directory.Exists("str3\\" + "picture"))
+                    //{
+                    //    targetPath = "str3//picture";
+                    //}
+                    //else
+                    //{
+                    //    Directory.CreateDirectory("str3\\" + "picture");
+                    //    targetPath = "str3//picture";
+                    //}
+                    //CopyDirectory(picPath, targetPath);
+                    //emoji.Path = targetPath + filename;
                     db.Emojis.Add(emoji);
                     db.SaveChanges();
                 }
             }
-            catch (Exception e) { }
+            catch (Exception e) { throw new ApplicationException($"错误!"); }
         }
         public static void CopyDirectory(string srcPath, string destPath)
         {
@@ -139,7 +135,19 @@ namespace EmojiManagement
                     return true;
             }
         }
+        public static void DeleteNull()
+        {
+            using (var db = new EmojiContext())
+            {
 
+                var query = db.Emojis.Where(o => o.Id == null);
+                foreach (Emoji e in query)
+                {
+                    db.Emojis.Remove(e);
+                }
+                db.SaveChanges();
+            }
+        }
 
         public static void DeleteEmoji(Emoji emoji)
         {

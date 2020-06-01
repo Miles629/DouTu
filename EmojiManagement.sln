@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmojiManagement", "EmojiMan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmojiForm", "EmojiForm\EmojiForm.csproj", "{46C184F8-ACA5-4181-A322-DD8B002F84E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmojiOCR", "EmojiOCR\EmojiOCR.csproj", "{B03718B5-7117-4396-BFD3-82375BBEA257}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{46C184F8-ACA5-4181-A322-DD8B002F84E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46C184F8-ACA5-4181-A322-DD8B002F84E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46C184F8-ACA5-4181-A322-DD8B002F84E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B03718B5-7117-4396-BFD3-82375BBEA257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B03718B5-7117-4396-BFD3-82375BBEA257}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B03718B5-7117-4396-BFD3-82375BBEA257}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B03718B5-7117-4396-BFD3-82375BBEA257}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

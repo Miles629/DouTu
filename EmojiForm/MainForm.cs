@@ -49,10 +49,20 @@ namespace EmojiForm
                 this.dataGridViewImage.Rows.Add();//增加行
                 this.dataGridViewImage.Rows[r].Height = 100;//限定行宽
             }
-
+            try
+            {
+                EmojiService.DeleteNull();
+                emojiList = EmojiService.SortbyFrequency();
+                ShowEmojis(EmojiService.SortbyFrequency());
+            }
+            catch
+            {
+                EmojiService.DeleteNull();
+                emojiList = EmojiService.SortbyFrequency();
+                ShowEmojis(EmojiService.SortbyFrequency());
+            }
             //展示热门表情
-            emojiList = EmojiService.SortbyFrequency();
-            ShowEmojis(EmojiService.SortbyFrequency());
+
 
         }
         private void showFilePicture(/*List<string> imagePathList*/)//需要传入路径的list
@@ -124,19 +134,28 @@ namespace EmojiForm
                     }
                 }
                 //展示图片
-                int count = 0;
-                for (int r = 0; r < row; r++)
+                try
                 {
-                    for (int c = 0; c < col; c++)
+                    int count = 0;
+                    for (int r = 0; r < row; r++)
                     {
-                        if (count < emojis.Count)
+                        for (int c = 0; c < col; c++)
                         {
-                            this.dataGridViewImage[c, r].Value = imageList.Images[count++];
+                            if (count < emojis.Count)
+                            {
+                                this.dataGridViewImage[c, r].Value = imageList.Images[count++];
 
+                            }
+                            else return;
                         }
-                        else return;
                     }
                 }
+                catch
+                {
+                    Exception e = new Exception();
+
+                }
+
             }
             this.Refresh();
        
