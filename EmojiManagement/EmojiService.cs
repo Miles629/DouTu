@@ -43,7 +43,7 @@ namespace EmojiManagement
                         File.Copy(src, dest, true);//三个参数分别是源文件路径，存储路径，若存储路径有相同文件是否替换
                     }
 
-                    emoji.Path = dest+filename;
+                    emoji.Path = dest;
                     db.Emojis.Add(emoji);
                     db.SaveChanges();
                 }
@@ -109,10 +109,14 @@ namespace EmojiManagement
             {
 
                 var query = db.Emojis.Where(o => o.Id == null || o.IsFavorite == null ||
-                            o.Path == null || o.Keyword == null);
+                            o.Path == "" || o.Keyword == null);
                 foreach (Emoji e in query)
                 {
                     db.Emojis.Remove(e);
+                }
+                foreach (Emoji e in db.Emojis)
+                {
+                    Console.WriteLine(e);
                 }
                 db.SaveChanges();
             }
@@ -214,7 +218,7 @@ namespace EmojiManagement
         public static List<Emoji> SortbyFrequency()
         {
             using (var db = new EmojiContext())
-            {
+            { 
                 var query = AllEmojis(db).ToList();
                 query.Sort();
                 return query;
