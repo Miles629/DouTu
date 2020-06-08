@@ -236,7 +236,7 @@ namespace EmojiForm
 
         private void export_Click(object sender, EventArgs e)
         {
-            EmojiService.ExportEmoji();
+            EmojiService.ExportEmoji(emojiList);
         }
 
         private void button1_Click(object sender, EventArgs e)
