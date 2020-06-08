@@ -10,6 +10,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using EmojiManagement;
 
 
@@ -288,54 +289,53 @@ namespace EmojiManagement
                 throw new NotImplementedException();
             }
         }
-        //导入表情
-        public static void ImportEmojis(String sourcePath, String targetTableName)
+        //导出表情
+        public static void ExportEmoji(List<Emoji> emojis) 
         {
-            //席诺
-            string sqlconn = System.Configuration.ConfigurationManager.ConnectionStrings["Strsqlconn"].ConnectionString;
-            SqlConnection conn = new SqlConnection(sqlconn);
-            conn.Open();
-            using (XmlTextReader xmlReader = new XmlTextReader(sourcePath))
+            if (emojis.Count != 0)
             {
-                DataSet ds = new DataSet();
-                ds.ReadXml(XmlReader.Create(sourcePath));//把数据读到DataSet这个过程有点慢，取决于XML文件大小
-                using (SqlBulkCopy bcp = new SqlBulkCopy(conn))
+                foreach (Emoji e in emojis)
                 {
-                    bcp.BatchSize = ds.Tables[0].Rows.Count;
-                    bcp.DestinationTableName = targetTableName;
-                    StringBuilder sbSQL = new StringBuilder();
-                    sbSQL.AppendFormat("select Id * from {0}", targetTableName);
-                    DbHelperSQL dbHelper = new DbHelperSQL();//自定义数据库操作类
-                    DataTable dt = dbHelper.GetDataTable(conn, sbSQL.ToString());
-                    for (int i = 0; i < dt.Columns.Count; i++)
+                    if (e.Path != "")
                     {
-                        for (int j = 0; j < ds.Tables[0].Columns.Count; j++)
+                        try
                         {
-                            if (dt.Columns[i].ColumnName == ds.Tables[0].Columns[j].ColumnName)
-                                bcp.ColumnMappings.Add(ds.Tables[0].Columns[j].ColumnName, dt.Columns[i].ColumnName);
+                            using (var db = new EmojiContext())
+                            {
+                                string src = e.Path;
+                                string filename = Path.GetFileName(src);
+                                string dest = @"C:\Users\Administrator\Desktop\DouTu\Export\" + filename;//D:\projects\.netprojects\DouTu\
+
+
+                                if (File.Exists(src))//必须判断要复制的文件是否存在
+                                {
+                                    File.Copy(src, dest, true);//三个参数分别是源文件路径，存储路径，若存储路径有相同文件是否替换
+                                }
+
+                                e.Path = dest;
+                            }
                         }
+                        catch (Exception ep) { }
+
                     }
-                    bcp.WriteToServer(ds.Tables[0]);
                 }
             }
-        }
-        //导出表情
-        public static void ExportEmoji()
-        {
-            using (SqlConnection con = new SqlConnection("Server=.;DataBase=EmojiDatabase;uid=root;pwd=root"))
+            try { 
+            using (System.IO.StringWriter stringWriter = new StringWriter(new StringBuilder()))
             {
-                con.Open();
-                SqlCommand command = new SqlCommand("select * from Emojis", con);
-                command.CommandType = CommandType.Text;
-                DataSet ds = new DataSet("DATASET");
-                //DATASET将成为XML文件中的根节点名称，否则系统将其命名为NewDataSet       
-                SqlDataAdapter sda = new SqlDataAdapter();
-                sda.SelectCommand = command;
-                sda.Fill(ds, "DATATABLE");
-                //DATATABLE为所生成XML文件中的子节点名称，否则系统将其命名为Table。    
-                ds.WriteXml("dbxml.xml");
-                // DataSet的方法WriteXml将数据写入到XML文件，就是这么一句话。如果不保存到文件，直接ds.GetXML()       
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Emoji>));
+                xmlSerializer.Serialize(stringWriter, emojis);
+
+                FileStream fs = new FileStream("export.xml", FileMode.OpenOrCreate);//EmojiForm\bin\Debug\export.xml
+                StreamWriter sw = new StreamWriter(fs);
+                sw.Write(stringWriter.ToString());
+                sw.Close();
+                fs.Close();
+                MessageBox.Show("导出文件成功！");
             }
+        }
+            catch (System.Exception ex)
+            { }
         }
     }
 }
