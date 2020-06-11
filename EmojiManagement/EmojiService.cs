@@ -304,7 +304,7 @@ namespace EmojiManagement
                             {
                                 string src = e.Path;
                                 string filename = Path.GetFileName(src);
-                                string dest = @"C:\Users\Administrator\Desktop\DouTu\Export\" + filename;//D:\projects\.netprojects\DouTu\
+                                string dest = @"..\..\..\Export\" + filename;
 
 
                                 if (File.Exists(src))//必须判断要复制的文件是否存在
@@ -326,14 +326,18 @@ namespace EmojiManagement
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Emoji>));
                 xmlSerializer.Serialize(stringWriter, emojis);
 
-                FileStream fs = new FileStream("export.xml", FileMode.OpenOrCreate);//EmojiForm\bin\Debug\export.xml
+                FileStream fs = new FileStream("export.xml", FileMode.OpenOrCreate);
                 StreamWriter sw = new StreamWriter(fs);
                 sw.Write(stringWriter.ToString());
                 sw.Close();
                 fs.Close();
                 MessageBox.Show("导出文件成功！");
+                    string src = @"..\..\..\EmojiForm\bin\Debug\export.xml";
+                    string filename = Path.GetFileName(src);
+                    string dest = @"..\..\..\Export\" + filename;
+                    File.Copy(src, dest, true);
+                }
             }
-        }
             catch (System.Exception ex)
             { }
         }
