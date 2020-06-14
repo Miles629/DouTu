@@ -34,7 +34,7 @@ namespace EmojiManagement
                 {
                     string src = emoji.Path;
                     string filename = Path.GetFileName(src);
-                    string dest = @"D:\projects\.netprojects\DouTu\test\" + filename;
+                    string dest = @"..\..\..\test\" + filename;
 
                     //File.Copy(src, dest);
                     //string pLocalFilePath = "";//要复制的文件路径
@@ -78,7 +78,7 @@ namespace EmojiManagement
                 throw;
             }
         }
-    
+
         /// <summary>
         /// 修改IsFavorite，参数i为0改为true，参数i为1改为false
         /// 蒋沁月
@@ -163,7 +163,7 @@ namespace EmojiManagement
                     var query = db.Emojis.Where(o => o.Id == emoji.Id);
                     foreach (Emoji ee in query)
                     {
-                    db.Emojis.Remove(ee);
+                        db.Emojis.Remove(ee);
                     }
                     db.SaveChanges();
                 }
@@ -219,7 +219,7 @@ namespace EmojiManagement
         public static List<Emoji> SortbyFrequency()
         {
             using (var db = new EmojiContext())
-            { 
+            {
                 var query = AllEmojis(db).ToList();
                 query.Sort();
                 return query;
@@ -290,56 +290,54 @@ namespace EmojiManagement
             }
         }
         //导出表情
-        public static void ExportEmoji(List<Emoji> emojis) 
+        public static void ExportEmoji(List<Emoji> emojis)
         {
-            if (emojis.Count != 0)
+            using (var db = new EmojiContext())
             {
-                foreach (Emoji e in emojis)
+                var queary = db.Emojis;
+                foreach (Emoji ee in queary)
                 {
-                    if (e.Path != "")
+                    if (ee.Path != null)
                     {
                         try
                         {
-                            using (var db = new EmojiContext())
+                            string src = ee.Path;
+                            string filename = Path.GetFileName(src);
+                            string dest = @"..\..\..\Export\" + filename;
+                            if (File.Exists(src))//必须判断要复制的文件是否存在
                             {
-                                string src = e.Path;
-                                string filename = Path.GetFileName(src);
-                                string dest = @"..\..\..\Export\" + filename;
-
-
-                                if (File.Exists(src))//必须判断要复制的文件是否存在
-                                {
-                                    File.Copy(src, dest, true);//三个参数分别是源文件路径，存储路径，若存储路径有相同文件是否替换
-                                }
-
-                                e.Path = dest;
+                                File.Copy(src, dest, true);//三个参数分别是源文件路径，存储路径，若存储路径有相同文件是否替换
                             }
+                            ee.Path = dest;
                         }
                         catch (Exception ep) { }
-
                     }
                 }
             }
-            try { 
-            using (System.IO.StringWriter stringWriter = new StringWriter(new StringBuilder()))
+            using (var db = new EmojiContext())
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Emoji>));
-                xmlSerializer.Serialize(stringWriter, emojis);
+                try
+                {
+                    using (System.IO.StringWriter stringWriter = new StringWriter(new StringBuilder()))
+                    {
+                        XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Emoji>));
+                        xmlSerializer.Serialize(stringWriter, emojis);
 
-                FileStream fs = new FileStream("export.xml", FileMode.OpenOrCreate);
-                StreamWriter sw = new StreamWriter(fs);
-                sw.Write(stringWriter.ToString());
-                sw.Close();
-                fs.Close();
-                MessageBox.Show("导出文件成功！");
-                    string src = @"..\..\..\EmojiForm\bin\Debug\export.xml";
-                    string filename = Path.GetFileName(src);
-                    string dest = @"..\..\..\Export\" + filename;
-                    File.Copy(src, dest, true);
+                        FileStream fs = new FileStream("export.xml", FileMode.OpenOrCreate);
+                        StreamWriter sw = new StreamWriter(fs);
+                        sw.Write(stringWriter.ToString());
+                        sw.Close();
+                        fs.Close();
+                        MessageBox.Show("导出文件成功！");
+                        string src = @"..\..\..\EmojiForm\bin\Debug\export.xml";
+                        string filename = Path.GetFileName(src);
+                        string dest = @"..\..\..\Export\" + filename;
+                        File.Copy(src, dest, true);
+                    }
                 }
+                catch (System.Exception ex)
+                { }
             }
-            catch (System.Exception ex)
-            { }
         }
     }
 }
