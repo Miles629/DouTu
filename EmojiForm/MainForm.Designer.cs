@@ -38,23 +38,20 @@
             this.recommend = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rbTargetProgrammer = new System.Windows.Forms.RadioButton();
+            this.rbTargetLover = new System.Windows.Forms.RadioButton();
+            this.rbTargetParents = new System.Windows.Forms.RadioButton();
+            this.rbTargetAll = new System.Windows.Forms.RadioButton();
             this.lblTargetPeople = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.rbSeriesOthers = new System.Windows.Forms.RadioButton();
+            this.rbSeriesBaby = new System.Windows.Forms.RadioButton();
+            this.rbSeriesPets = new System.Windows.Forms.RadioButton();
+            this.rbSeriesPanda = new System.Windows.Forms.RadioButton();
+            this.rbSeriesTom = new System.Windows.Forms.RadioButton();
             this.lblSeries = new System.Windows.Forms.Label();
             this.export = new System.Windows.Forms.Button();
             this.likes = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.selectedText = new System.Windows.Forms.Label();
             this.dataGridViewImage = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
@@ -64,10 +61,10 @@
             this.加入收藏ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查看属性ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除表情ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rbSeriesAll = new System.Windows.Forms.RadioButton();
             this.flowLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).BeginInit();
             this.panel1.SuspendLayout();
             this.cmsRightClick.SuspendLayout();
@@ -82,13 +79,15 @@
             this.flowLayoutPanel2.Controls.Add(this.search);
             this.flowLayoutPanel2.Controls.Add(this.recommend);
             this.flowLayoutPanel2.Controls.Add(this.button1);
+            this.flowLayoutPanel2.Controls.Add(this.export);
+            this.flowLayoutPanel2.Controls.Add(this.likes);
             this.flowLayoutPanel2.Controls.Add(this.panel2);
             this.flowLayoutPanel2.Controls.Add(this.panel3);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1070, 155);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1180, 155);
             this.flowLayoutPanel2.TabIndex = 13;
             // 
             // textBox1
@@ -165,138 +164,141 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.radioButton4);
-            this.panel2.Controls.Add(this.radioButton3);
-            this.panel2.Controls.Add(this.radioButton2);
-            this.panel2.Controls.Add(this.radioButton1);
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.rbTargetProgrammer);
+            this.panel2.Controls.Add(this.rbTargetLover);
+            this.panel2.Controls.Add(this.rbTargetParents);
+            this.panel2.Controls.Add(this.rbTargetAll);
             this.panel2.Controls.Add(this.lblTargetPeople);
             this.panel2.Location = new System.Drawing.Point(13, 53);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1045, 40);
+            this.panel2.Size = new System.Drawing.Size(1167, 40);
             this.panel2.TabIndex = 19;
             // 
-            // radioButton4
+            // rbTargetProgrammer
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(306, 13);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(80, 21);
-            this.radioButton4.TabIndex = 22;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "程序员";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.rbTargetProgrammer.AutoSize = true;
+            this.rbTargetProgrammer.Location = new System.Drawing.Point(316, 13);
+            this.rbTargetProgrammer.Name = "rbTargetProgrammer";
+            this.rbTargetProgrammer.Size = new System.Drawing.Size(80, 21);
+            this.rbTargetProgrammer.TabIndex = 22;
+            this.rbTargetProgrammer.TabStop = true;
+            this.rbTargetProgrammer.Text = "程序员";
+            this.rbTargetProgrammer.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rbTargetLover
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(236, 14);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(63, 21);
-            this.radioButton3.TabIndex = 21;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "恋人";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rbTargetLover.AutoSize = true;
+            this.rbTargetLover.Location = new System.Drawing.Point(249, 13);
+            this.rbTargetLover.Name = "rbTargetLover";
+            this.rbTargetLover.Size = new System.Drawing.Size(63, 21);
+            this.rbTargetLover.TabIndex = 21;
+            this.rbTargetLover.TabStop = true;
+            this.rbTargetLover.Text = "恋人";
+            this.rbTargetLover.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbTargetParents
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(167, 14);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(63, 21);
-            this.radioButton2.TabIndex = 20;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "父母";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbTargetParents.AutoSize = true;
+            this.rbTargetParents.Location = new System.Drawing.Point(180, 14);
+            this.rbTargetParents.Name = "rbTargetParents";
+            this.rbTargetParents.Size = new System.Drawing.Size(63, 21);
+            this.rbTargetParents.TabIndex = 20;
+            this.rbTargetParents.TabStop = true;
+            this.rbTargetParents.Text = "父母";
+            this.rbTargetParents.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbTargetAll
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(98, 14);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(63, 21);
-            this.radioButton1.TabIndex = 19;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "全部";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbTargetAll.AutoSize = true;
+            this.rbTargetAll.Location = new System.Drawing.Point(109, 14);
+            this.rbTargetAll.Name = "rbTargetAll";
+            this.rbTargetAll.Size = new System.Drawing.Size(63, 21);
+            this.rbTargetAll.TabIndex = 19;
+            this.rbTargetAll.TabStop = true;
+            this.rbTargetAll.Text = "全部";
+            this.rbTargetAll.UseVisualStyleBackColor = true;
+            this.rbTargetAll.CheckedChanged += new System.EventHandler(this.rbTargetAll_CheckedChanged);
             // 
             // lblTargetPeople
             // 
             this.lblTargetPeople.AutoSize = true;
             this.lblTargetPeople.Font = new System.Drawing.Font("宋体", 10.74627F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblTargetPeople.Location = new System.Drawing.Point(-1, 0);
+            this.lblTargetPeople.Location = new System.Drawing.Point(0, 0);
             this.lblTargetPeople.Name = "lblTargetPeople";
-            this.lblTargetPeople.Padding = new System.Windows.Forms.Padding(0, 15, 0, 0);
-            this.lblTargetPeople.Size = new System.Drawing.Size(98, 36);
+            this.lblTargetPeople.Padding = new System.Windows.Forms.Padding(0, 15, 5, 0);
+            this.lblTargetPeople.Size = new System.Drawing.Size(103, 36);
             this.lblTargetPeople.TabIndex = 18;
             this.lblTargetPeople.Text = "适用对象";
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.radioButton9);
-            this.panel3.Controls.Add(this.radioButton8);
-            this.panel3.Controls.Add(this.radioButton7);
-            this.panel3.Controls.Add(this.radioButton6);
-            this.panel3.Controls.Add(this.radioButton5);
+            this.panel3.Controls.Add(this.rbSeriesAll);
+            this.panel3.Controls.Add(this.rbSeriesOthers);
+            this.panel3.Controls.Add(this.rbSeriesBaby);
+            this.panel3.Controls.Add(this.rbSeriesPets);
+            this.panel3.Controls.Add(this.rbSeriesPanda);
+            this.panel3.Controls.Add(this.rbSeriesTom);
             this.panel3.Controls.Add(this.lblSeries);
             this.panel3.Location = new System.Drawing.Point(13, 99);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1045, 40);
+            this.panel3.Size = new System.Drawing.Size(1167, 40);
             this.panel3.TabIndex = 20;
             // 
-            // radioButton9
+            // rbSeriesOthers
             // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(466, 9);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(63, 21);
-            this.radioButton9.TabIndex = 5;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "其他";
-            this.radioButton9.UseVisualStyleBackColor = true;
+            this.rbSeriesOthers.AutoSize = true;
+            this.rbSeriesOthers.Location = new System.Drawing.Point(541, 9);
+            this.rbSeriesOthers.Name = "rbSeriesOthers";
+            this.rbSeriesOthers.Size = new System.Drawing.Size(63, 21);
+            this.rbSeriesOthers.TabIndex = 5;
+            this.rbSeriesOthers.TabStop = true;
+            this.rbSeriesOthers.Text = "其他";
+            this.rbSeriesOthers.UseVisualStyleBackColor = true;
             // 
-            // radioButton8
+            // rbSeriesBaby
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(362, 9);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(97, 21);
-            this.radioButton8.TabIndex = 4;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "天线宝宝";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.rbSeriesBaby.AutoSize = true;
+            this.rbSeriesBaby.Location = new System.Drawing.Point(438, 9);
+            this.rbSeriesBaby.Name = "rbSeriesBaby";
+            this.rbSeriesBaby.Size = new System.Drawing.Size(97, 21);
+            this.rbSeriesBaby.TabIndex = 4;
+            this.rbSeriesBaby.TabStop = true;
+            this.rbSeriesBaby.Text = "天线宝宝";
+            this.rbSeriesBaby.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // rbSeriesPets
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(292, 9);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(63, 21);
-            this.radioButton7.TabIndex = 3;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "宠物";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.rbSeriesPets.AutoSize = true;
+            this.rbSeriesPets.Location = new System.Drawing.Point(369, 9);
+            this.rbSeriesPets.Name = "rbSeriesPets";
+            this.rbSeriesPets.Size = new System.Drawing.Size(63, 21);
+            this.rbSeriesPets.TabIndex = 3;
+            this.rbSeriesPets.TabStop = true;
+            this.rbSeriesPets.Text = "宠物";
+            this.rbSeriesPets.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // rbSeriesPanda
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(206, 9);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(80, 21);
-            this.radioButton6.TabIndex = 2;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "熊猫头";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.rbSeriesPanda.AutoSize = true;
+            this.rbSeriesPanda.Location = new System.Drawing.Point(283, 9);
+            this.rbSeriesPanda.Name = "rbSeriesPanda";
+            this.rbSeriesPanda.Size = new System.Drawing.Size(80, 21);
+            this.rbSeriesPanda.TabIndex = 2;
+            this.rbSeriesPanda.TabStop = true;
+            this.rbSeriesPanda.Text = "熊猫头";
+            this.rbSeriesPanda.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // rbSeriesTom
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(102, 9);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(97, 21);
-            this.radioButton5.TabIndex = 1;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "猫和老鼠";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.rbSeriesTom.AutoSize = true;
+            this.rbSeriesTom.Location = new System.Drawing.Point(180, 9);
+            this.rbSeriesTom.Name = "rbSeriesTom";
+            this.rbSeriesTom.Size = new System.Drawing.Size(97, 21);
+            this.rbSeriesTom.TabIndex = 1;
+            this.rbSeriesTom.TabStop = true;
+            this.rbSeriesTom.Text = "猫和老鼠";
+            this.rbSeriesTom.UseVisualStyleBackColor = true;
             // 
             // lblSeries
             // 
@@ -304,15 +306,15 @@
             this.lblSeries.Font = new System.Drawing.Font("宋体", 10.74627F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblSeries.Location = new System.Drawing.Point(0, 9);
             this.lblSeries.Name = "lblSeries";
-            this.lblSeries.Size = new System.Drawing.Size(102, 21);
+            this.lblSeries.Size = new System.Drawing.Size(90, 21);
             this.lblSeries.TabIndex = 0;
-            this.lblSeries.Text = "系    列";
+            this.lblSeries.Text = "系   列";
             // 
             // export
             // 
-            this.export.Location = new System.Drawing.Point(3, 3);
+            this.export.Location = new System.Drawing.Point(899, 12);
             this.export.Name = "export";
-            this.export.Size = new System.Drawing.Size(130, 47);
+            this.export.Size = new System.Drawing.Size(110, 35);
             this.export.TabIndex = 17;
             this.export.Text = "批量导出";
             this.export.UseVisualStyleBackColor = true;
@@ -320,46 +322,13 @@
             // 
             // likes
             // 
-            this.likes.Location = new System.Drawing.Point(3, 56);
+            this.likes.Location = new System.Drawing.Point(1015, 12);
             this.likes.Name = "likes";
-            this.likes.Size = new System.Drawing.Size(130, 47);
+            this.likes.Size = new System.Drawing.Size(109, 34);
             this.likes.TabIndex = 14;
             this.likes.Text = "我的收藏";
             this.likes.UseVisualStyleBackColor = true;
             this.likes.Click += new System.EventHandler(this.likes_Click);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.export);
-            this.flowLayoutPanel1.Controls.Add(this.likes);
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.selectedText);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(933, 155);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(137, 497);
-            this.flowLayoutPanel1.TabIndex = 20;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 115);
-            this.label1.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 17);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "当前选中：";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // selectedText
-            // 
-            this.selectedText.AutoSize = true;
-            this.selectedText.Location = new System.Drawing.Point(10, 150);
-            this.selectedText.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.selectedText.Name = "selectedText";
-            this.selectedText.Size = new System.Drawing.Size(0, 17);
-            this.selectedText.TabIndex = 21;
             // 
             // dataGridViewImage
             // 
@@ -371,7 +340,7 @@
             this.dataGridViewImage.RowHeadersWidth = 62;
             this.dataGridViewImage.RowTemplate.Height = 30;
             this.dataGridViewImage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewImage.Size = new System.Drawing.Size(927, 491);
+            this.dataGridViewImage.Size = new System.Drawing.Size(1174, 491);
             this.dataGridViewImage.TabIndex = 21;
             this.dataGridViewImage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewImage_CellContentClick);
             this.dataGridViewImage.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewImage_CellMouseDown);
@@ -385,7 +354,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 155);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(3);
-            this.panel1.Size = new System.Drawing.Size(933, 497);
+            this.panel1.Size = new System.Drawing.Size(1180, 497);
             this.panel1.TabIndex = 22;
             // 
             // imageList
@@ -422,31 +391,41 @@
             // 加入收藏ToolStripMenuItem
             // 
             this.加入收藏ToolStripMenuItem.Name = "加入收藏ToolStripMenuItem";
-            this.加入收藏ToolStripMenuItem.Size = new System.Drawing.Size(228, 28);
+            this.加入收藏ToolStripMenuItem.Size = new System.Drawing.Size(148, 28);
             this.加入收藏ToolStripMenuItem.Text = "加入收藏";
             this.加入收藏ToolStripMenuItem.Click += new System.EventHandler(this.加入收藏ToolStripMenuItem_Click);
             // 
             // 查看属性ToolStripMenuItem
             // 
             this.查看属性ToolStripMenuItem.Name = "查看属性ToolStripMenuItem";
-            this.查看属性ToolStripMenuItem.Size = new System.Drawing.Size(228, 28);
+            this.查看属性ToolStripMenuItem.Size = new System.Drawing.Size(148, 28);
             this.查看属性ToolStripMenuItem.Text = "查看属性";
             this.查看属性ToolStripMenuItem.Click += new System.EventHandler(this.查看属性ToolStripMenuItem_Click);
             // 
             // 删除表情ToolStripMenuItem
             // 
             this.删除表情ToolStripMenuItem.Name = "删除表情ToolStripMenuItem";
-            this.删除表情ToolStripMenuItem.Size = new System.Drawing.Size(228, 28);
+            this.删除表情ToolStripMenuItem.Size = new System.Drawing.Size(148, 28);
             this.删除表情ToolStripMenuItem.Text = "删除表情";
             this.删除表情ToolStripMenuItem.Click += new System.EventHandler(this.删除表情ToolStripMenuItem_Click);
+            // 
+            // rbSeriesAll
+            // 
+            this.rbSeriesAll.AutoSize = true;
+            this.rbSeriesAll.Location = new System.Drawing.Point(109, 9);
+            this.rbSeriesAll.Name = "rbSeriesAll";
+            this.rbSeriesAll.Size = new System.Drawing.Size(63, 21);
+            this.rbSeriesAll.TabIndex = 6;
+            this.rbSeriesAll.TabStop = true;
+            this.rbSeriesAll.Text = "全部";
+            this.rbSeriesAll.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1070, 652);
+            this.ClientSize = new System.Drawing.Size(1180, 652);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Name = "MainForm";
             this.Text = "逗图";
@@ -456,8 +435,6 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.cmsRightClick.ResumeLayout(false);
@@ -475,26 +452,23 @@
         private System.Windows.Forms.Button export;
         private System.Windows.Forms.Button recommend;
         private System.Windows.Forms.Button likes;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.DataGridView dataGridViewImage;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label selectedText;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblTargetPeople;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rbTargetProgrammer;
+        private System.Windows.Forms.RadioButton rbTargetLover;
+        private System.Windows.Forms.RadioButton rbTargetParents;
+        private System.Windows.Forms.RadioButton rbTargetAll;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton rbSeriesOthers;
+        private System.Windows.Forms.RadioButton rbSeriesBaby;
+        private System.Windows.Forms.RadioButton rbSeriesPets;
+        private System.Windows.Forms.RadioButton rbSeriesPanda;
+        private System.Windows.Forms.RadioButton rbSeriesTom;
         private System.Windows.Forms.Label lblSeries;
         private System.Windows.Forms.ToolTip toolTip1;
         public System.Windows.Forms.ToolTip toolTipCell;
@@ -502,6 +476,7 @@
         private System.Windows.Forms.ToolStripMenuItem 加入收藏ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 查看属性ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删除表情ToolStripMenuItem;
+        private System.Windows.Forms.RadioButton rbSeriesAll;
     }
 }
 

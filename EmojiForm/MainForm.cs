@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using EmojiManagement;
 using Ubiety.Dns.Core;
@@ -16,8 +17,8 @@ namespace EmojiForm
     public partial class MainForm : Form
     {
         //展示多少单元格
-        private int row = 4;
-        private int col = 5;
+        private int row = 6;
+        private int col = 7;
 
         //搜索条件 默认0(按标签)，1(按对象)，2(按系列)
         private int queryCondi = 0;
@@ -111,8 +112,8 @@ namespace EmojiForm
                 }
             }
         }
-            public void ShowEmojis(List<Emoji> emojis)
-            {
+        public void ShowEmojis(List<Emoji> emojis)
+        {
             //清空图片数据
             imageList.Images.Clear();
             for (int r = 0; r < row; r++)
@@ -156,10 +157,7 @@ namespace EmojiForm
                     }
                 }
             }
-
             this.Refresh();
-       
-
         }
 
         private void import_Click(object sender, EventArgs e)
@@ -204,7 +202,7 @@ namespace EmojiForm
             if (location < emojiList.Count)
             {
                 emojiSelected = emojiList[location];
-                selectedText.Text = emojiSelected.ToString();
+                //selectedText.Text = emojiSelected.ToString();
                 Clipboard.SetDataObject(new Bitmap(emojiSelected.Path));
             }
         }
@@ -342,6 +340,11 @@ namespace EmojiForm
         private void 查看属性ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(emojiSelected.ToString());
+        }
+
+        private void rbTargetAll_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
