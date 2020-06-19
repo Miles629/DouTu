@@ -169,26 +169,13 @@ namespace EmojiForm
         {
             showFilePicture(/*recommendList*/);
         }
+
+        //按关键词查找
         private void search_Click(object sender, EventArgs e)
         {
-            switch (queryCondi)
-            {
-                case 0:
-                    emojiList.Clear();
-                    emojiList = EmojiService.SearchByKeyword(textBox1.Text);
-                    ShowEmojis(emojiList);
-                    break;
-                case 1:
-                    emojiList.Clear();
-                    emojiList = EmojiService.SearchByTargetPeople(textBox1.Text);
-                    ShowEmojis(emojiList);
-                    break;
-                case 2:
-                    emojiList.Clear();
-                    emojiList =EmojiService.SearchBySeries(textBox1.Text);
-                    ShowEmojis(emojiList);
-                    break;
-            }
+            emojiList.Clear();
+            emojiList = EmojiService.SearchByKeyword(textBox1.Text);
+            ShowEmojis(emojiList);
         }
 
 
@@ -275,7 +262,7 @@ namespace EmojiForm
             if (location < emojiList.Count)
             {
                 emojiHovered = emojiList[location];
-                toolTip1.SetToolTip(dataGridViewImage, emojiSelected.ToString());
+                //toolTip1.SetToolTip(dataGridViewImage, emojiSelected.ToString());
             }
         }
 
@@ -350,6 +337,7 @@ namespace EmojiForm
 
         private void 刷新ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            emojiList.Clear();
             EmojiService.DeleteNull();
             emojiList = EmojiService.SortbyFrequency();
             ShowEmojis(EmojiService.SortbyFrequency());
@@ -417,6 +405,21 @@ namespace EmojiForm
             emojiList.Clear();
             emojiList = EmojiService.SearchBySeries(rbSeriesOthers.Text);
             ShowEmojis(emojiList);
+        }
+
+        private void btnAddEmoji_Click(object sender, EventArgs e)
+        {
+            AddForm add = new AddForm();
+            add.ShowDialog();
+        }
+
+        private void 返回首页ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            EmojiService.DeleteNull();
+            emojiList = EmojiService.SortbyFrequency();
+            ShowEmojis(EmojiService.SortbyFrequency());
+            this.Refresh();
         }
     }
 }

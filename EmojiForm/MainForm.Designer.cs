@@ -31,12 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.bylabel = new System.Windows.Forms.RadioButton();
-            this.bytarget = new System.Windows.Forms.RadioButton();
-            this.byseries = new System.Windows.Forms.RadioButton();
             this.search = new System.Windows.Forms.Button();
             this.recommend = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.rbTargetProgrammer = new System.Windows.Forms.RadioButton();
             this.rbTargetLover = new System.Windows.Forms.RadioButton();
@@ -65,6 +61,9 @@
             this.刷新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxTarget = new System.Windows.Forms.GroupBox();
             this.groupBoxSeries = new System.Windows.Forms.GroupBox();
+            this.btnAddEmoji = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.返回首页ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -73,73 +72,33 @@
             this.cmsRightClick.SuspendLayout();
             this.groupBoxTarget.SuspendLayout();
             this.groupBoxSeries.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Controls.Add(this.textBox1);
-            this.flowLayoutPanel2.Controls.Add(this.bylabel);
-            this.flowLayoutPanel2.Controls.Add(this.bytarget);
-            this.flowLayoutPanel2.Controls.Add(this.byseries);
-            this.flowLayoutPanel2.Controls.Add(this.search);
-            this.flowLayoutPanel2.Controls.Add(this.recommend);
-            this.flowLayoutPanel2.Controls.Add(this.button1);
-            this.flowLayoutPanel2.Controls.Add(this.export);
-            this.flowLayoutPanel2.Controls.Add(this.likes);
+            this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel1);
             this.flowLayoutPanel2.Controls.Add(this.panel2);
             this.flowLayoutPanel2.Controls.Add(this.panel3);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1180, 155);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1180, 147);
             this.flowLayoutPanel2.TabIndex = 13;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 12);
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBox1.Font = new System.Drawing.Font("宋体", 10.74627F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox1.Location = new System.Drawing.Point(236, 5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(312, 27);
+            this.textBox1.Size = new System.Drawing.Size(574, 30);
             this.textBox1.TabIndex = 15;
-            // 
-            // bylabel
-            // 
-            this.bylabel.AutoSize = true;
-            this.bylabel.Checked = true;
-            this.bylabel.Location = new System.Drawing.Point(331, 12);
-            this.bylabel.Name = "bylabel";
-            this.bylabel.Size = new System.Drawing.Size(80, 21);
-            this.bylabel.TabIndex = 11;
-            this.bylabel.TabStop = true;
-            this.bylabel.Text = "按标签";
-            this.bylabel.UseVisualStyleBackColor = true;
-            this.bylabel.CheckedChanged += new System.EventHandler(this.bylabel_CheckedChanged);
-            // 
-            // bytarget
-            // 
-            this.bytarget.AutoSize = true;
-            this.bytarget.Location = new System.Drawing.Point(417, 12);
-            this.bytarget.Name = "bytarget";
-            this.bytarget.Size = new System.Drawing.Size(80, 21);
-            this.bytarget.TabIndex = 12;
-            this.bytarget.Text = "按对象";
-            this.bytarget.UseVisualStyleBackColor = true;
-            this.bytarget.CheckedChanged += new System.EventHandler(this.bytarget_CheckedChanged);
-            // 
-            // byseries
-            // 
-            this.byseries.AutoSize = true;
-            this.byseries.Location = new System.Drawing.Point(503, 12);
-            this.byseries.Name = "byseries";
-            this.byseries.Size = new System.Drawing.Size(80, 21);
-            this.byseries.TabIndex = 13;
-            this.byseries.Text = "按系列";
-            this.byseries.UseVisualStyleBackColor = true;
-            this.byseries.CheckedChanged += new System.EventHandler(this.byseries_CheckedChanged);
             // 
             // search
             // 
-            this.search.Location = new System.Drawing.Point(589, 12);
+            this.search.Location = new System.Drawing.Point(816, 3);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(91, 35);
             this.search.TabIndex = 14;
@@ -149,7 +108,7 @@
             // 
             // recommend
             // 
-            this.recommend.Location = new System.Drawing.Point(686, 12);
+            this.recommend.Location = new System.Drawing.Point(118, 3);
             this.recommend.Name = "recommend";
             this.recommend.Size = new System.Drawing.Size(112, 34);
             this.recommend.TabIndex = 15;
@@ -157,22 +116,12 @@
             this.recommend.UseVisualStyleBackColor = true;
             this.recommend.Click += new System.EventHandler(this.recommend_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(804, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 34);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "刷新";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.groupBoxTarget);
             this.panel2.Controls.Add(this.lblTargetPeople);
-            this.panel2.Location = new System.Drawing.Point(13, 53);
+            this.panel2.Location = new System.Drawing.Point(13, 59);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1167, 40);
             this.panel2.TabIndex = 19;
@@ -240,9 +189,9 @@
             // 
             this.panel3.Controls.Add(this.groupBoxSeries);
             this.panel3.Controls.Add(this.lblSeries);
-            this.panel3.Location = new System.Drawing.Point(13, 99);
+            this.panel3.Location = new System.Drawing.Point(13, 105);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1167, 40);
+            this.panel3.Size = new System.Drawing.Size(1167, 37);
             this.panel3.TabIndex = 20;
             // 
             // rbSeriesOthers
@@ -317,7 +266,7 @@
             // 
             // export
             // 
-            this.export.Location = new System.Drawing.Point(899, 12);
+            this.export.Location = new System.Drawing.Point(1024, 3);
             this.export.Name = "export";
             this.export.Size = new System.Drawing.Size(110, 35);
             this.export.TabIndex = 17;
@@ -327,7 +276,7 @@
             // 
             // likes
             // 
-            this.likes.Location = new System.Drawing.Point(1015, 12);
+            this.likes.Location = new System.Drawing.Point(3, 3);
             this.likes.Name = "likes";
             this.likes.Size = new System.Drawing.Size(109, 34);
             this.likes.TabIndex = 14;
@@ -339,13 +288,14 @@
             // 
             this.dataGridViewImage.AllowUserToAddRows = false;
             this.dataGridViewImage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewImage.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridViewImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewImage.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewImage.Name = "dataGridViewImage";
             this.dataGridViewImage.RowHeadersWidth = 62;
             this.dataGridViewImage.RowTemplate.Height = 30;
             this.dataGridViewImage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewImage.Size = new System.Drawing.Size(1174, 491);
+            this.dataGridViewImage.Size = new System.Drawing.Size(1174, 551);
             this.dataGridViewImage.TabIndex = 21;
             this.dataGridViewImage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewImage_CellContentClick);
             this.dataGridViewImage.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewImage_CellMouseDown);
@@ -356,10 +306,10 @@
             // 
             this.panel1.Controls.Add(this.dataGridViewImage);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 155);
+            this.panel1.Location = new System.Drawing.Point(0, 147);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(3);
-            this.panel1.Size = new System.Drawing.Size(1180, 497);
+            this.panel1.Size = new System.Drawing.Size(1180, 557);
             this.panel1.TabIndex = 22;
             // 
             // imageList
@@ -390,9 +340,10 @@
             this.加入收藏ToolStripMenuItem,
             this.删除表情ToolStripMenuItem,
             this.查看属性ToolStripMenuItem,
-            this.刷新ToolStripMenuItem});
+            this.刷新ToolStripMenuItem,
+            this.返回首页ToolStripMenuItem});
             this.cmsRightClick.Name = "cmsRightClick";
-            this.cmsRightClick.Size = new System.Drawing.Size(149, 116);
+            this.cmsRightClick.Size = new System.Drawing.Size(229, 175);
             // 
             // 加入收藏ToolStripMenuItem
             // 
@@ -461,17 +412,46 @@
             this.groupBoxSeries.TabIndex = 7;
             this.groupBoxSeries.TabStop = false;
             // 
+            // btnAddEmoji
+            // 
+            this.btnAddEmoji.Location = new System.Drawing.Point(913, 3);
+            this.btnAddEmoji.Name = "btnAddEmoji";
+            this.btnAddEmoji.Size = new System.Drawing.Size(105, 35);
+            this.btnAddEmoji.TabIndex = 21;
+            this.btnAddEmoji.Text = "添加表情";
+            this.btnAddEmoji.UseVisualStyleBackColor = true;
+            this.btnAddEmoji.Click += new System.EventHandler(this.btnAddEmoji_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.likes);
+            this.flowLayoutPanel1.Controls.Add(this.recommend);
+            this.flowLayoutPanel1.Controls.Add(this.textBox1);
+            this.flowLayoutPanel1.Controls.Add(this.search);
+            this.flowLayoutPanel1.Controls.Add(this.btnAddEmoji);
+            this.flowLayoutPanel1.Controls.Add(this.export);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 12);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1155, 41);
+            this.flowLayoutPanel1.TabIndex = 22;
+            // 
+            // 返回首页ToolStripMenuItem
+            // 
+            this.返回首页ToolStripMenuItem.Name = "返回首页ToolStripMenuItem";
+            this.返回首页ToolStripMenuItem.Size = new System.Drawing.Size(228, 28);
+            this.返回首页ToolStripMenuItem.Text = "返回首页";
+            this.返回首页ToolStripMenuItem.Click += new System.EventHandler(this.返回首页ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1180, 652);
+            this.ClientSize = new System.Drawing.Size(1180, 704);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Name = "MainForm";
             this.Text = "逗图";
             this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -483,6 +463,8 @@
             this.groupBoxTarget.PerformLayout();
             this.groupBoxSeries.ResumeLayout(false);
             this.groupBoxSeries.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -490,9 +472,6 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.RadioButton bylabel;
-        private System.Windows.Forms.RadioButton bytarget;
-        private System.Windows.Forms.RadioButton byseries;
         private System.Windows.Forms.Button search;
         private System.Windows.Forms.Button export;
         private System.Windows.Forms.Button recommend;
@@ -501,7 +480,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblTargetPeople;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.RadioButton rbTargetProgrammer;
@@ -525,6 +503,9 @@
         private System.Windows.Forms.ToolStripMenuItem 刷新ToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBoxTarget;
         private System.Windows.Forms.GroupBox groupBoxSeries;
+        private System.Windows.Forms.Button btnAddEmoji;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ToolStripMenuItem 返回首页ToolStripMenuItem;
     }
 }
 
