@@ -34,6 +34,7 @@ namespace EmojiForm
 
         public MainForm()
         {
+
             InitializeComponent();
             //增加列
             for(int c = 0;c < col; c++)
@@ -61,6 +62,7 @@ namespace EmojiForm
                 emojiList = EmojiService.SortbyFrequency();
                 ShowEmojis(EmojiService.SortbyFrequency());
             }
+
 
 
         }
@@ -260,6 +262,49 @@ namespace EmojiForm
             emojiList = EmojiService.SortbyFrequency();
             ShowEmojis(emojiList);
 
+        }
+
+        private void dataGridViewImage_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 5000;//提示信息的可见时间
+            toolTip1.InitialDelay = 500;//事件触发多久后出现提示
+            toolTip1.ReshowDelay = 500;//指针从一个控件移向另一个控件时，经过多久才会显示下一个提示框
+            toolTip1.ShowAlways = true;//是否显示提示框
+            Emoji emojiHovered;
+            int r = dataGridViewImage.CurrentCell.RowIndex;
+            int c = dataGridViewImage.CurrentCell.ColumnIndex;
+            int location = r * col + c;
+            if (location < emojiList.Count)
+            {
+                emojiHovered = emojiList[location];
+                toolTip1.SetToolTip(dataGridViewImage, "111");
+            }
+        }
+
+        private void toolTipCell_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewImage_MouseHover(object sender, EventArgs e)
+        {
+            dataGridViewImage.ShowCellToolTips = true;
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 5000;//提示信息的可见时间
+            toolTip1.InitialDelay = 500;//事件触发多久后出现提示
+            toolTip1.ReshowDelay = 500;//指针从一个控件移向另一个控件时，经过多久才会显示下一个提示框
+            toolTip1.ShowAlways = true;//是否显示提示框
+            //toolTip1.Show("tooptip1", dataGridViewImage,MousePosition.X,MousePosition.Y);
+            Emoji emojiHovered;
+            int r = dataGridViewImage.CurrentCell.RowIndex;
+            int c = dataGridViewImage.CurrentCell.ColumnIndex;
+            int location = r * col + c;
+            if (location < emojiList.Count)
+            {
+                emojiHovered = emojiList[location];
+                toolTip1.SetToolTip(dataGridViewImage, emojiHovered.ToString());
+            }
         }
     }
 }
