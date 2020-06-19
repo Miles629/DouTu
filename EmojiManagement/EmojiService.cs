@@ -263,6 +263,14 @@ namespace EmojiManagement
         public static List<Emoji> SearchBySeries(string info)
         {
             //张智敏&马草原
+            if (info == "全部")
+            {
+                using (var db = new EmojiContext())
+                {
+                    var query = AllEmojis(db);
+                    return query.ToList();
+                }
+            }
             using (var db = new EmojiContext())
             {
                 var query = AllEmojis(db)

@@ -135,7 +135,7 @@ namespace EmojiForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Emoji newemoji = new Emoji(pathTextBox.Text, keywordTextBox.Text, seriesTextBox.Text, targetTextBox.Text, 0, false);
+            Emoji newemoji = new Emoji(pathTextBox.Text, keywordTextBox.Text, cmbSeries.Text, cmbTarget.Text, 0, false);
             try
             {
                 EmojiService.AddEmoji(newemoji);
@@ -143,8 +143,6 @@ namespace EmojiForm
                 pictureBox1.Image = null;
                 pathTextBox.Text = "";
                 keywordTextBox.Text = "";
-                seriesTextBox.Text = "";
-                targetTextBox.Text = "";
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());

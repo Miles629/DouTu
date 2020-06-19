@@ -16,8 +16,8 @@ namespace EmojiForm
     public partial class MainForm : Form
     {
         //展示多少单元格
-        private int row = 4;
-        private int col = 5;
+        private int row = 6;
+        private int col = 7;
 
         //搜索条件 默认0(按标签)，1(按对象)，2(按系列)
         private int queryCondi = 0;
@@ -34,6 +34,7 @@ namespace EmojiForm
 
         public MainForm()
         {
+
             InitializeComponent();
             //增加列
             for(int c = 0;c < col; c++)
@@ -63,6 +64,7 @@ namespace EmojiForm
             }
 
 
+
         }
         private void showFilePicture(/*List<string> imagePathList*/)//需要传入路径的list
         {
@@ -76,7 +78,7 @@ namespace EmojiForm
             foreach (FileInfo file in fileinfo)
             {
                 pathList.Add(file.FullName);//图片路径
-                this.imageList.Images.Add(Image.FromFile(file.FullName));
+                this.imageList.Images.Add(System.Drawing.Image.FromFile(file.FullName));
             }
             for (int c = 0; c < col; c++)
             {
@@ -109,8 +111,8 @@ namespace EmojiForm
                 }
             }
         }
-            public void ShowEmojis(List<Emoji> emojis)
-            {
+        public void ShowEmojis(List<Emoji> emojis)
+        {
             //清空图片数据
             imageList.Images.Clear();
             for (int r = 0; r < row; r++)
@@ -132,7 +134,7 @@ namespace EmojiForm
                     {
                         try
                         {
-                            this.imageList.Images.Add(Image.FromFile(e.Path));
+                            this.imageList.Images.Add(System.Drawing.Image.FromFile(e.Path));
                         }
                         catch (System.IO.FileNotFoundException) { }
                     }
@@ -154,10 +156,7 @@ namespace EmojiForm
                     }
                 }
             }
-
             this.Refresh();
-       
-
         }
 
         private void import_Click(object sender, EventArgs e)
@@ -170,26 +169,13 @@ namespace EmojiForm
         {
             showFilePicture(/*recommendList*/);
         }
+
+        //按关键词查找
         private void search_Click(object sender, EventArgs e)
         {
-            switch (queryCondi)
-            {
-                case 0:
-                    emojiList.Clear();
-                    emojiList = EmojiService.SearchByKeyword(textBox1.Text);
-                    ShowEmojis(emojiList);
-                    break;
-                case 1:
-                    emojiList.Clear();
-                    emojiList = EmojiService.SearchByTargetPeople(textBox1.Text);
-                    ShowEmojis(emojiList);
-                    break;
-                case 2:
-                    emojiList.Clear();
-                    emojiList =EmojiService.SearchBySeries(textBox1.Text);
-                    ShowEmojis(emojiList);
-                    break;
-            }
+            emojiList.Clear();
+            emojiList = EmojiService.SearchByKeyword(textBox1.Text);
+            ShowEmojis(emojiList);
         }
 
 
@@ -202,7 +188,7 @@ namespace EmojiForm
             if (location < emojiList.Count)
             {
                 emojiSelected = emojiList[location];
-                selectedText.Text = emojiSelected.ToString();
+                //selectedText.Text = emojiSelected.ToString();
                 Clipboard.SetDataObject(new Bitmap(emojiSelected.Path));
             }
         }
@@ -260,6 +246,189 @@ namespace EmojiForm
             emojiList = EmojiService.SortbyFrequency();
             ShowEmojis(emojiList);
 
+        }
+
+        private void dataGridViewImage_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 5000;//提示信息的可见时间
+            toolTip1.InitialDelay = 500;//事件触发多久后出现提示
+            toolTip1.ReshowDelay = 500;//指针从一个控件移向另一个控件时，经过多久才会显示下一个提示框
+            toolTip1.ShowAlways = true;//是否显示提示框
+            Emoji emojiHovered;
+            int r = dataGridViewImage.CurrentCell.RowIndex;
+            int c = dataGridViewImage.CurrentCell.ColumnIndex;
+            int location = r * col + c;
+            if (location < emojiList.Count)
+            {
+                emojiHovered = emojiList[location];
+                //toolTip1.SetToolTip(dataGridViewImage, emojiSelected.ToString());
+            }
+        }
+
+        private void toolTipCell_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewImage_MouseHover(object sender, EventArgs e)
+        {
+            dataGridViewImage.ShowCellToolTips = true;
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 5000;//提示信息的可见时间
+            toolTip1.InitialDelay = 500;//事件触发多久后出现提示
+            toolTip1.ReshowDelay = 500;//指针从一个控件移向另一个控件时，经过多久才会显示下一个提示框
+            toolTip1.ShowAlways = true;//是否显示提示框
+            //toolTip1.Show("tooptip1", dataGridViewImage,MousePosition.X,MousePosition.Y);
+            Emoji emojiHovered;
+            int r = dataGridViewImage.CurrentCell.RowIndex;
+            int c = dataGridViewImage.CurrentCell.ColumnIndex;
+            int location = r * col + c;
+            if (location < emojiList.Count)
+            {
+                emojiHovered = emojiList[location];
+                toolTip1.SetToolTip(dataGridViewImage, emojiHovered.ToString());
+            }
+        }
+
+        private void dataGridViewImage_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //鼠标右键显示菜单
+            if (e.Button == MouseButtons.Right)
+            {
+                int r = dataGridViewImage.CurrentCell.RowIndex;
+                int c = dataGridViewImage.CurrentCell.ColumnIndex;
+                int location = r * col + c;
+                if (location < emojiList.Count)
+                {
+                    emojiSelected = emojiList[location];
+                    cmsRightClick.Show(MousePosition);
+                }
+            }
+        }
+
+        private void 加入收藏ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EmojiService.FrequencyPlus(emojiSelected);
+            EmojiService.ModifyIsFavorite(emojiSelected, 0);
+            MessageBox.Show("加入收藏夹成功");
+        }
+
+        private void 删除表情ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            EmojiService.DeleteEmoji(emojiSelected);
+            MessageBox.Show("删除成功");
+            emojiList = EmojiService.SortbyFrequency();
+            ShowEmojis(emojiList);
+        }
+
+        private void 查看属性ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(emojiSelected.ToString());
+        }
+
+        private void rbTargetAll_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchByTargetPeople(rbTargetAll.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void 刷新ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            EmojiService.DeleteNull();
+            emojiList = EmojiService.SortbyFrequency();
+            ShowEmojis(EmojiService.SortbyFrequency());
+            this.Refresh();
+        }
+
+        private void rbTargetParents_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchByTargetPeople(rbTargetParents.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbTargetLover_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchByTargetPeople(rbTargetLover.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbTargetProgrammer_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchByTargetPeople(rbTargetProgrammer.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbSeriesAll_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchBySeries(rbSeriesAll.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbSeriesTom_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchBySeries(rbSeriesTom.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbSeriesPanda_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchBySeries(rbSeriesPanda.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbSeriesPets_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchBySeries(rbSeriesPets.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbSeriesBaby_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchBySeries(rbSeriesBaby.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbSeriesOthers_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchBySeries(rbSeriesOthers.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void btnAddEmoji_Click(object sender, EventArgs e)
+        {
+            AddForm add = new AddForm();
+            add.ShowDialog();
+        }
+
+        private void 返回首页ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            EmojiService.DeleteNull();
+            emojiList = EmojiService.SortbyFrequency();
+            ShowEmojis(EmojiService.SortbyFrequency());
+            this.Refresh();
+        }
+
+        private void btnMain_Click(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            EmojiService.DeleteNull();
+            emojiList = EmojiService.SortbyFrequency();
+            ShowEmojis(EmojiService.SortbyFrequency());
+            this.Refresh();
         }
     }
 }
