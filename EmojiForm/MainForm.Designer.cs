@@ -37,7 +37,6 @@
             this.search = new System.Windows.Forms.Button();
             this.recommend = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -51,9 +50,7 @@
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.lblSeries = new System.Windows.Forms.Label();
-            this.import = new System.Windows.Forms.Button();
             this.export = new System.Windows.Forms.Button();
-            this.addlike = new System.Windows.Forms.Button();
             this.likes = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -63,12 +60,17 @@
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.toolTipCell = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.cmsRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.加入收藏ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查看属性ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除表情ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).BeginInit();
             this.panel1.SuspendLayout();
+            this.cmsRightClick.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel2
@@ -80,7 +82,6 @@
             this.flowLayoutPanel2.Controls.Add(this.search);
             this.flowLayoutPanel2.Controls.Add(this.recommend);
             this.flowLayoutPanel2.Controls.Add(this.button1);
-            this.flowLayoutPanel2.Controls.Add(this.button2);
             this.flowLayoutPanel2.Controls.Add(this.panel2);
             this.flowLayoutPanel2.Controls.Add(this.panel3);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -161,16 +162,6 @@
             this.button1.Text = "刷新";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(899, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(93, 34);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "删除";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel2
             // 
@@ -317,18 +308,9 @@
             this.lblSeries.TabIndex = 0;
             this.lblSeries.Text = "系    列";
             // 
-            // import
-            // 
-            this.import.Location = new System.Drawing.Point(3, 3);
-            this.import.Name = "import";
-            this.import.Size = new System.Drawing.Size(128, 47);
-            this.import.TabIndex = 18;
-            this.import.Text = "添加表情";
-            this.import.UseVisualStyleBackColor = true;
-            // 
             // export
             // 
-            this.export.Location = new System.Drawing.Point(3, 56);
+            this.export.Location = new System.Drawing.Point(3, 3);
             this.export.Name = "export";
             this.export.Size = new System.Drawing.Size(130, 47);
             this.export.TabIndex = 17;
@@ -336,19 +318,9 @@
             this.export.UseVisualStyleBackColor = true;
             this.export.Click += new System.EventHandler(this.export_Click);
             // 
-            // addlike
-            // 
-            this.addlike.Location = new System.Drawing.Point(3, 109);
-            this.addlike.Name = "addlike";
-            this.addlike.Size = new System.Drawing.Size(130, 47);
-            this.addlike.TabIndex = 19;
-            this.addlike.Text = "加入收藏";
-            this.addlike.UseVisualStyleBackColor = true;
-            this.addlike.Click += new System.EventHandler(this.addlike_Click);
-            // 
             // likes
             // 
-            this.likes.Location = new System.Drawing.Point(3, 162);
+            this.likes.Location = new System.Drawing.Point(3, 56);
             this.likes.Name = "likes";
             this.likes.Size = new System.Drawing.Size(130, 47);
             this.likes.TabIndex = 14;
@@ -358,23 +330,21 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.import);
             this.flowLayoutPanel1.Controls.Add(this.export);
-            this.flowLayoutPanel1.Controls.Add(this.addlike);
             this.flowLayoutPanel1.Controls.Add(this.likes);
             this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.selectedText);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(930, 155);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(933, 155);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(140, 497);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(137, 497);
             this.flowLayoutPanel1.TabIndex = 20;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 221);
+            this.label1.Location = new System.Drawing.Point(10, 115);
             this.label1.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 17);
@@ -385,7 +355,7 @@
             // selectedText
             // 
             this.selectedText.AutoSize = true;
-            this.selectedText.Location = new System.Drawing.Point(10, 256);
+            this.selectedText.Location = new System.Drawing.Point(10, 150);
             this.selectedText.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.selectedText.Name = "selectedText";
             this.selectedText.Size = new System.Drawing.Size(0, 17);
@@ -401,9 +371,10 @@
             this.dataGridViewImage.RowHeadersWidth = 62;
             this.dataGridViewImage.RowTemplate.Height = 30;
             this.dataGridViewImage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewImage.Size = new System.Drawing.Size(924, 491);
+            this.dataGridViewImage.Size = new System.Drawing.Size(927, 491);
             this.dataGridViewImage.TabIndex = 21;
             this.dataGridViewImage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewImage_CellContentClick);
+            this.dataGridViewImage.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewImage_CellMouseDown);
             this.dataGridViewImage.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewImage_CellMouseEnter);
             this.dataGridViewImage.MouseHover += new System.EventHandler(this.dataGridViewImage_MouseHover);
             // 
@@ -414,7 +385,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 155);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(3);
-            this.panel1.Size = new System.Drawing.Size(930, 497);
+            this.panel1.Size = new System.Drawing.Size(933, 497);
             this.panel1.TabIndex = 22;
             // 
             // imageList
@@ -438,6 +409,37 @@
             this.toolTip1.OwnerDraw = true;
             this.toolTip1.ShowAlways = true;
             // 
+            // cmsRightClick
+            // 
+            this.cmsRightClick.ImageScalingSize = new System.Drawing.Size(22, 22);
+            this.cmsRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.加入收藏ToolStripMenuItem,
+            this.删除表情ToolStripMenuItem,
+            this.查看属性ToolStripMenuItem});
+            this.cmsRightClick.Name = "cmsRightClick";
+            this.cmsRightClick.Size = new System.Drawing.Size(149, 88);
+            // 
+            // 加入收藏ToolStripMenuItem
+            // 
+            this.加入收藏ToolStripMenuItem.Name = "加入收藏ToolStripMenuItem";
+            this.加入收藏ToolStripMenuItem.Size = new System.Drawing.Size(228, 28);
+            this.加入收藏ToolStripMenuItem.Text = "加入收藏";
+            this.加入收藏ToolStripMenuItem.Click += new System.EventHandler(this.加入收藏ToolStripMenuItem_Click);
+            // 
+            // 查看属性ToolStripMenuItem
+            // 
+            this.查看属性ToolStripMenuItem.Name = "查看属性ToolStripMenuItem";
+            this.查看属性ToolStripMenuItem.Size = new System.Drawing.Size(228, 28);
+            this.查看属性ToolStripMenuItem.Text = "查看属性";
+            this.查看属性ToolStripMenuItem.Click += new System.EventHandler(this.查看属性ToolStripMenuItem_Click);
+            // 
+            // 删除表情ToolStripMenuItem
+            // 
+            this.删除表情ToolStripMenuItem.Name = "删除表情ToolStripMenuItem";
+            this.删除表情ToolStripMenuItem.Size = new System.Drawing.Size(228, 28);
+            this.删除表情ToolStripMenuItem.Text = "删除表情";
+            this.删除表情ToolStripMenuItem.Click += new System.EventHandler(this.删除表情ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
@@ -458,6 +460,7 @@
             this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.cmsRightClick.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -469,10 +472,8 @@
         private System.Windows.Forms.RadioButton bytarget;
         private System.Windows.Forms.RadioButton byseries;
         private System.Windows.Forms.Button search;
-        private System.Windows.Forms.Button import;
         private System.Windows.Forms.Button export;
         private System.Windows.Forms.Button recommend;
-        private System.Windows.Forms.Button addlike;
         private System.Windows.Forms.Button likes;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.DataGridView dataGridViewImage;
@@ -482,7 +483,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label selectedText;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lblTargetPeople;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.RadioButton radioButton4;
@@ -498,6 +498,10 @@
         private System.Windows.Forms.Label lblSeries;
         private System.Windows.Forms.ToolTip toolTip1;
         public System.Windows.Forms.ToolTip toolTipCell;
+        private System.Windows.Forms.ContextMenuStrip cmsRightClick;
+        private System.Windows.Forms.ToolStripMenuItem 加入收藏ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 查看属性ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 删除表情ToolStripMenuItem;
     }
 }
 

@@ -306,5 +306,42 @@ namespace EmojiForm
                 toolTip1.SetToolTip(dataGridViewImage, emojiHovered.ToString());
             }
         }
+
+        private void dataGridViewImage_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //鼠标右键显示菜单
+            if (e.Button == MouseButtons.Right)
+            {
+                int r = dataGridViewImage.CurrentCell.RowIndex;
+                int c = dataGridViewImage.CurrentCell.ColumnIndex;
+                int location = r * col + c;
+                if (location < emojiList.Count)
+                {
+                    emojiSelected = emojiList[location];
+                    cmsRightClick.Show(MousePosition);
+                }
+            }
+        }
+
+        private void 加入收藏ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EmojiService.FrequencyPlus(emojiSelected);
+            EmojiService.ModifyIsFavorite(emojiSelected, 0);
+            MessageBox.Show("加入收藏夹成功");
+        }
+
+        private void 删除表情ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            EmojiService.DeleteEmoji(emojiSelected);
+            MessageBox.Show("删除成功");
+            emojiList = EmojiService.SortbyFrequency();
+            ShowEmojis(emojiList);
+        }
+
+        private void 查看属性ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(emojiSelected.ToString());
+        }
     }
 }
