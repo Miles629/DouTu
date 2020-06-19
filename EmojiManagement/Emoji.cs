@@ -62,7 +62,7 @@ namespace EmojiManagement
         public override string ToString()
         {
             StringBuilder strBuilder = new StringBuilder();
-            strBuilder.Append($"关键词:{Keyword},系列:{Series},适用对象：{TargetPeople},使用频率:{Frequency}\t");
+            strBuilder.Append($"关键词:{Keyword},\n系列:{Series},\n适用对象：{TargetPeople},\n使用频率:{Frequency}\t");
             return strBuilder.ToString();
         }
         public override bool Equals(object obj)

@@ -7,7 +7,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using EmojiManagement;
 using Ubiety.Dns.Core;
@@ -79,7 +78,7 @@ namespace EmojiForm
             foreach (FileInfo file in fileinfo)
             {
                 pathList.Add(file.FullName);//图片路径
-                this.imageList.Images.Add(Image.FromFile(file.FullName));
+                this.imageList.Images.Add(System.Drawing.Image.FromFile(file.FullName));
             }
             for (int c = 0; c < col; c++)
             {
@@ -135,7 +134,7 @@ namespace EmojiForm
                     {
                         try
                         {
-                            this.imageList.Images.Add(Image.FromFile(e.Path));
+                            this.imageList.Images.Add(System.Drawing.Image.FromFile(e.Path));
                         }
                         catch (System.IO.FileNotFoundException) { }
                     }
@@ -276,7 +275,7 @@ namespace EmojiForm
             if (location < emojiList.Count)
             {
                 emojiHovered = emojiList[location];
-                toolTip1.SetToolTip(dataGridViewImage, "111");
+                toolTip1.SetToolTip(dataGridViewImage, emojiSelected.ToString());
             }
         }
 
@@ -344,7 +343,80 @@ namespace EmojiForm
 
         private void rbTargetAll_CheckedChanged(object sender, EventArgs e)
         {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchByTargetPeople(rbTargetAll.Text);
+            ShowEmojis(emojiList);
+        }
 
+        private void 刷新ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EmojiService.DeleteNull();
+            emojiList = EmojiService.SortbyFrequency();
+            ShowEmojis(EmojiService.SortbyFrequency());
+            this.Refresh();
+        }
+
+        private void rbTargetParents_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchByTargetPeople(rbTargetParents.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbTargetLover_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchByTargetPeople(rbTargetLover.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbTargetProgrammer_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchByTargetPeople(rbTargetProgrammer.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbSeriesAll_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchBySeries(rbSeriesAll.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbSeriesTom_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchBySeries(rbSeriesTom.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbSeriesPanda_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchBySeries(rbSeriesPanda.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbSeriesPets_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchBySeries(rbSeriesPets.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbSeriesBaby_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchBySeries(rbSeriesBaby.Text);
+            ShowEmojis(emojiList);
+        }
+
+        private void rbSeriesOthers_CheckedChanged(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            emojiList = EmojiService.SearchBySeries(rbSeriesOthers.Text);
+            ShowEmojis(emojiList);
         }
     }
 }

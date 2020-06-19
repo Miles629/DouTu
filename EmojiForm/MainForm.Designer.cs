@@ -62,12 +62,17 @@
             this.查看属性ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除表情ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rbSeriesAll = new System.Windows.Forms.RadioButton();
+            this.刷新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBoxTarget = new System.Windows.Forms.GroupBox();
+            this.groupBoxSeries = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).BeginInit();
             this.panel1.SuspendLayout();
             this.cmsRightClick.SuspendLayout();
+            this.groupBoxTarget.SuspendLayout();
+            this.groupBoxSeries.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel2
@@ -165,10 +170,7 @@
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.rbTargetProgrammer);
-            this.panel2.Controls.Add(this.rbTargetLover);
-            this.panel2.Controls.Add(this.rbTargetParents);
-            this.panel2.Controls.Add(this.rbTargetAll);
+            this.panel2.Controls.Add(this.groupBoxTarget);
             this.panel2.Controls.Add(this.lblTargetPeople);
             this.panel2.Location = new System.Drawing.Point(13, 53);
             this.panel2.Name = "panel2";
@@ -178,40 +180,43 @@
             // rbTargetProgrammer
             // 
             this.rbTargetProgrammer.AutoSize = true;
-            this.rbTargetProgrammer.Location = new System.Drawing.Point(316, 13);
+            this.rbTargetProgrammer.Location = new System.Drawing.Point(232, 6);
             this.rbTargetProgrammer.Name = "rbTargetProgrammer";
             this.rbTargetProgrammer.Size = new System.Drawing.Size(80, 21);
             this.rbTargetProgrammer.TabIndex = 22;
             this.rbTargetProgrammer.TabStop = true;
             this.rbTargetProgrammer.Text = "程序员";
             this.rbTargetProgrammer.UseVisualStyleBackColor = true;
+            this.rbTargetProgrammer.CheckedChanged += new System.EventHandler(this.rbTargetProgrammer_CheckedChanged);
             // 
             // rbTargetLover
             // 
             this.rbTargetLover.AutoSize = true;
-            this.rbTargetLover.Location = new System.Drawing.Point(249, 13);
+            this.rbTargetLover.Location = new System.Drawing.Point(163, 6);
             this.rbTargetLover.Name = "rbTargetLover";
             this.rbTargetLover.Size = new System.Drawing.Size(63, 21);
             this.rbTargetLover.TabIndex = 21;
             this.rbTargetLover.TabStop = true;
             this.rbTargetLover.Text = "恋人";
             this.rbTargetLover.UseVisualStyleBackColor = true;
+            this.rbTargetLover.CheckedChanged += new System.EventHandler(this.rbTargetLover_CheckedChanged);
             // 
             // rbTargetParents
             // 
             this.rbTargetParents.AutoSize = true;
-            this.rbTargetParents.Location = new System.Drawing.Point(180, 14);
+            this.rbTargetParents.Location = new System.Drawing.Point(85, 6);
             this.rbTargetParents.Name = "rbTargetParents";
             this.rbTargetParents.Size = new System.Drawing.Size(63, 21);
             this.rbTargetParents.TabIndex = 20;
             this.rbTargetParents.TabStop = true;
             this.rbTargetParents.Text = "父母";
             this.rbTargetParents.UseVisualStyleBackColor = true;
+            this.rbTargetParents.CheckedChanged += new System.EventHandler(this.rbTargetParents_CheckedChanged);
             // 
             // rbTargetAll
             // 
             this.rbTargetAll.AutoSize = true;
-            this.rbTargetAll.Location = new System.Drawing.Point(109, 14);
+            this.rbTargetAll.Location = new System.Drawing.Point(6, 6);
             this.rbTargetAll.Name = "rbTargetAll";
             this.rbTargetAll.Size = new System.Drawing.Size(63, 21);
             this.rbTargetAll.TabIndex = 19;
@@ -233,12 +238,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.rbSeriesAll);
-            this.panel3.Controls.Add(this.rbSeriesOthers);
-            this.panel3.Controls.Add(this.rbSeriesBaby);
-            this.panel3.Controls.Add(this.rbSeriesPets);
-            this.panel3.Controls.Add(this.rbSeriesPanda);
-            this.panel3.Controls.Add(this.rbSeriesTom);
+            this.panel3.Controls.Add(this.groupBoxSeries);
             this.panel3.Controls.Add(this.lblSeries);
             this.panel3.Location = new System.Drawing.Point(13, 99);
             this.panel3.Name = "panel3";
@@ -248,57 +248,62 @@
             // rbSeriesOthers
             // 
             this.rbSeriesOthers.AutoSize = true;
-            this.rbSeriesOthers.Location = new System.Drawing.Point(541, 9);
+            this.rbSeriesOthers.Location = new System.Drawing.Point(477, 0);
             this.rbSeriesOthers.Name = "rbSeriesOthers";
             this.rbSeriesOthers.Size = new System.Drawing.Size(63, 21);
             this.rbSeriesOthers.TabIndex = 5;
             this.rbSeriesOthers.TabStop = true;
             this.rbSeriesOthers.Text = "其他";
             this.rbSeriesOthers.UseVisualStyleBackColor = true;
+            this.rbSeriesOthers.CheckedChanged += new System.EventHandler(this.rbSeriesOthers_CheckedChanged);
             // 
             // rbSeriesBaby
             // 
             this.rbSeriesBaby.AutoSize = true;
-            this.rbSeriesBaby.Location = new System.Drawing.Point(438, 9);
+            this.rbSeriesBaby.Location = new System.Drawing.Point(364, 0);
             this.rbSeriesBaby.Name = "rbSeriesBaby";
             this.rbSeriesBaby.Size = new System.Drawing.Size(97, 21);
             this.rbSeriesBaby.TabIndex = 4;
             this.rbSeriesBaby.TabStop = true;
             this.rbSeriesBaby.Text = "天线宝宝";
             this.rbSeriesBaby.UseVisualStyleBackColor = true;
+            this.rbSeriesBaby.CheckedChanged += new System.EventHandler(this.rbSeriesBaby_CheckedChanged);
             // 
             // rbSeriesPets
             // 
             this.rbSeriesPets.AutoSize = true;
-            this.rbSeriesPets.Location = new System.Drawing.Point(369, 9);
+            this.rbSeriesPets.Location = new System.Drawing.Point(290, 0);
             this.rbSeriesPets.Name = "rbSeriesPets";
             this.rbSeriesPets.Size = new System.Drawing.Size(63, 21);
             this.rbSeriesPets.TabIndex = 3;
             this.rbSeriesPets.TabStop = true;
             this.rbSeriesPets.Text = "宠物";
             this.rbSeriesPets.UseVisualStyleBackColor = true;
+            this.rbSeriesPets.CheckedChanged += new System.EventHandler(this.rbSeriesPets_CheckedChanged);
             // 
             // rbSeriesPanda
             // 
             this.rbSeriesPanda.AutoSize = true;
-            this.rbSeriesPanda.Location = new System.Drawing.Point(283, 9);
+            this.rbSeriesPanda.Location = new System.Drawing.Point(197, 0);
             this.rbSeriesPanda.Name = "rbSeriesPanda";
             this.rbSeriesPanda.Size = new System.Drawing.Size(80, 21);
             this.rbSeriesPanda.TabIndex = 2;
             this.rbSeriesPanda.TabStop = true;
             this.rbSeriesPanda.Text = "熊猫头";
             this.rbSeriesPanda.UseVisualStyleBackColor = true;
+            this.rbSeriesPanda.CheckedChanged += new System.EventHandler(this.rbSeriesPanda_CheckedChanged);
             // 
             // rbSeriesTom
             // 
             this.rbSeriesTom.AutoSize = true;
-            this.rbSeriesTom.Location = new System.Drawing.Point(180, 9);
+            this.rbSeriesTom.Location = new System.Drawing.Point(85, 0);
             this.rbSeriesTom.Name = "rbSeriesTom";
             this.rbSeriesTom.Size = new System.Drawing.Size(97, 21);
             this.rbSeriesTom.TabIndex = 1;
             this.rbSeriesTom.TabStop = true;
             this.rbSeriesTom.Text = "猫和老鼠";
             this.rbSeriesTom.UseVisualStyleBackColor = true;
+            this.rbSeriesTom.CheckedChanged += new System.EventHandler(this.rbSeriesTom_CheckedChanged);
             // 
             // lblSeries
             // 
@@ -384,9 +389,10 @@
             this.cmsRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.加入收藏ToolStripMenuItem,
             this.删除表情ToolStripMenuItem,
-            this.查看属性ToolStripMenuItem});
+            this.查看属性ToolStripMenuItem,
+            this.刷新ToolStripMenuItem});
             this.cmsRightClick.Name = "cmsRightClick";
-            this.cmsRightClick.Size = new System.Drawing.Size(149, 88);
+            this.cmsRightClick.Size = new System.Drawing.Size(149, 116);
             // 
             // 加入收藏ToolStripMenuItem
             // 
@@ -412,13 +418,48 @@
             // rbSeriesAll
             // 
             this.rbSeriesAll.AutoSize = true;
-            this.rbSeriesAll.Location = new System.Drawing.Point(109, 9);
+            this.rbSeriesAll.Location = new System.Drawing.Point(6, 0);
             this.rbSeriesAll.Name = "rbSeriesAll";
             this.rbSeriesAll.Size = new System.Drawing.Size(63, 21);
             this.rbSeriesAll.TabIndex = 6;
             this.rbSeriesAll.TabStop = true;
             this.rbSeriesAll.Text = "全部";
             this.rbSeriesAll.UseVisualStyleBackColor = true;
+            this.rbSeriesAll.CheckedChanged += new System.EventHandler(this.rbSeriesAll_CheckedChanged);
+            // 
+            // 刷新ToolStripMenuItem
+            // 
+            this.刷新ToolStripMenuItem.Name = "刷新ToolStripMenuItem";
+            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(148, 28);
+            this.刷新ToolStripMenuItem.Text = "刷新";
+            this.刷新ToolStripMenuItem.Click += new System.EventHandler(this.刷新ToolStripMenuItem_Click);
+            // 
+            // groupBoxTarget
+            // 
+            this.groupBoxTarget.Controls.Add(this.rbTargetProgrammer);
+            this.groupBoxTarget.Controls.Add(this.rbTargetAll);
+            this.groupBoxTarget.Controls.Add(this.rbTargetLover);
+            this.groupBoxTarget.Controls.Add(this.rbTargetParents);
+            this.groupBoxTarget.Location = new System.Drawing.Point(109, 9);
+            this.groupBoxTarget.Name = "groupBoxTarget";
+            this.groupBoxTarget.Size = new System.Drawing.Size(337, 27);
+            this.groupBoxTarget.TabIndex = 23;
+            this.groupBoxTarget.TabStop = false;
+            // 
+            // groupBoxSeries
+            // 
+            this.groupBoxSeries.Controls.Add(this.rbSeriesAll);
+            this.groupBoxSeries.Controls.Add(this.rbSeriesOthers);
+            this.groupBoxSeries.Controls.Add(this.rbSeriesTom);
+            this.groupBoxSeries.Controls.Add(this.rbSeriesBaby);
+            this.groupBoxSeries.Controls.Add(this.rbSeriesPanda);
+            this.groupBoxSeries.Controls.Add(this.rbSeriesPets);
+            this.groupBoxSeries.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBoxSeries.Location = new System.Drawing.Point(109, 9);
+            this.groupBoxSeries.Name = "groupBoxSeries";
+            this.groupBoxSeries.Size = new System.Drawing.Size(558, 28);
+            this.groupBoxSeries.TabIndex = 7;
+            this.groupBoxSeries.TabStop = false;
             // 
             // MainForm
             // 
@@ -438,6 +479,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.cmsRightClick.ResumeLayout(false);
+            this.groupBoxTarget.ResumeLayout(false);
+            this.groupBoxTarget.PerformLayout();
+            this.groupBoxSeries.ResumeLayout(false);
+            this.groupBoxSeries.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -477,6 +522,9 @@
         private System.Windows.Forms.ToolStripMenuItem 查看属性ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删除表情ToolStripMenuItem;
         private System.Windows.Forms.RadioButton rbSeriesAll;
+        private System.Windows.Forms.ToolStripMenuItem 刷新ToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBoxTarget;
+        private System.Windows.Forms.GroupBox groupBoxSeries;
     }
 }
 
