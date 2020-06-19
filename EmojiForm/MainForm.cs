@@ -421,5 +421,14 @@ namespace EmojiForm
             ShowEmojis(EmojiService.SortbyFrequency());
             this.Refresh();
         }
+
+        private void btnMain_Click(object sender, EventArgs e)
+        {
+            emojiList.Clear();
+            EmojiService.DeleteNull();
+            emojiList = EmojiService.SortbyFrequency();
+            ShowEmojis(EmojiService.SortbyFrequency());
+            this.Refresh();
+        }
     }
 }
