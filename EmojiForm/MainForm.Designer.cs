@@ -66,6 +66,7 @@
             this.返回首页ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.btnMain = new System.Windows.Forms.Button();
+            this.修改属性ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -338,10 +339,11 @@
             this.加入收藏ToolStripMenuItem,
             this.删除表情ToolStripMenuItem,
             this.查看属性ToolStripMenuItem,
+            this.修改属性ToolStripMenuItem,
             this.刷新ToolStripMenuItem,
             this.返回首页ToolStripMenuItem});
             this.cmsRightClick.Name = "cmsRightClick";
-            this.cmsRightClick.Size = new System.Drawing.Size(149, 144);
+            this.cmsRightClick.Size = new System.Drawing.Size(229, 203);
             // 
             // 加入收藏ToolStripMenuItem
             // 
@@ -461,6 +463,13 @@
             this.btnMain.UseVisualStyleBackColor = true;
             this.btnMain.Click += new System.EventHandler(this.btnMain_Click);
             // 
+            // 修改属性ToolStripMenuItem
+            // 
+            this.修改属性ToolStripMenuItem.Name = "修改属性ToolStripMenuItem";
+            this.修改属性ToolStripMenuItem.Size = new System.Drawing.Size(228, 28);
+            this.修改属性ToolStripMenuItem.Text = "修改属性";
+            this.修改属性ToolStripMenuItem.Click += new System.EventHandler(this.修改属性ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
@@ -527,6 +536,7 @@
         private System.Windows.Forms.GroupBox groupBoxTarget;
         private System.Windows.Forms.Button btnMain;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem 修改属性ToolStripMenuItem;
     }
 }
 
