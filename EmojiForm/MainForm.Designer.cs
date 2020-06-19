@@ -169,7 +169,6 @@
             this.rbTargetAll.Name = "rbTargetAll";
             this.rbTargetAll.Size = new System.Drawing.Size(63, 21);
             this.rbTargetAll.TabIndex = 19;
-            this.rbTargetAll.TabStop = true;
             this.rbTargetAll.Text = "全部";
             this.rbTargetAll.UseVisualStyleBackColor = true;
             this.rbTargetAll.CheckedChanged += new System.EventHandler(this.rbTargetAll_CheckedChanged);
@@ -343,7 +342,7 @@
             this.刷新ToolStripMenuItem,
             this.返回首页ToolStripMenuItem});
             this.cmsRightClick.Name = "cmsRightClick";
-            this.cmsRightClick.Size = new System.Drawing.Size(229, 175);
+            this.cmsRightClick.Size = new System.Drawing.Size(149, 144);
             // 
             // 加入收藏ToolStripMenuItem
             // 
@@ -501,11 +500,11 @@
         private System.Windows.Forms.ToolStripMenuItem 删除表情ToolStripMenuItem;
         private System.Windows.Forms.RadioButton rbSeriesAll;
         private System.Windows.Forms.ToolStripMenuItem 刷新ToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBoxTarget;
         private System.Windows.Forms.GroupBox groupBoxSeries;
         private System.Windows.Forms.Button btnAddEmoji;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.ToolStripMenuItem 返回首页ToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBoxTarget;
     }
 }
 
