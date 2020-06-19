@@ -430,5 +430,11 @@ namespace EmojiForm
             ShowEmojis(EmojiService.SortbyFrequency());
             this.Refresh();
         }
+
+        private void 修改属性ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModifyForm modiForm = new ModifyForm(emojiSelected);
+            modiForm.ShowDialog();
+        }
     }
 }
