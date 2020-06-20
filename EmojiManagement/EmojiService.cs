@@ -234,11 +234,11 @@ namespace EmojiManagement
             using (var db = new EmojiContext())
             {
                 var query1 = AllEmojis(db)
-                  .Where(e => e.Keyword == info);
+                  .Where(e => e.Keyword.Contains(info));
                 var query2 = AllEmojis(db)
-                  .Where(e => e.Series == info);
+                  .Where(e => e.Series.Contains(info));
                 var query3 = AllEmojis(db)
-                  .Where(e => e.TargetPeople == info);
+                  .Where(e => e.TargetPeople.Contains(info));
                 var query = query1.Concat(query2);
                 query = query.Concat(query3);
                 return query.ToList();
@@ -253,7 +253,7 @@ namespace EmojiManagement
             using (var db = new EmojiContext())
             {
                 var query = AllEmojis(db)
-                  .Where(e => e.Keyword == info);
+                  .Where(e => e.Keyword.Contains(info));
                 return query.ToList();
             }
 
@@ -274,7 +274,7 @@ namespace EmojiManagement
             using (var db = new EmojiContext())
             {
                 var query = AllEmojis(db)
-                  .Where(e => e.Series == info);
+                  .Where(e => e.Series.Contains(info));
                 return query.ToList();
             }
         }
@@ -286,7 +286,7 @@ namespace EmojiManagement
             using (var db = new EmojiContext())
             {
                 var query = AllEmojis(db)
-                  .Where(e => e.TargetPeople == info);
+                  .Where(e => e.TargetPeople.Contains(info));
                 return query.ToList();
             }
         }
